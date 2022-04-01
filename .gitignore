@@ -1,0 +1,14 @@
+# MacOS
+.DS_Store
+
+# IDEA
+.idea/
+*.iml
+
+# 临时文件
+*.tmp
+*.bak
+
+# 测试用
+test/
+test.yaml
