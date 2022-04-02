@@ -1,0 +1,87 @@
+- name: install dependencies
+  yum:
+    name:
+      - libcurl
+      - openssl
+      - xz-libs
+    state: present
+
+- name: create group 'mongod'
+  group:
+    name: mongod
+    state: present
+
+- name: crete user 'mongod'
+  user:
+    name: mongod
+    group: mongod
+    create_home: no
+    shell: /usr/sbin/nologin
+    state: present
+
+- name: create directores for data files
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: mongod
+    group: mongod
+  with_items:
+    - "{{ mongodb_cluster_replica_set.data_dir }}"
+
+- name: create directores for log files
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: mongod
+    group: mongod
+  with_items:
+    - "{{ mongodb_cluster_replica_set.log_dir }}"
+
+- name: create directores for pid files
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: mongod
+    group: mongod
+  with_items:
+    - "{{ mongodb_cluster_replica_set.pid_dir }}"
+
+- name: create directores for configuration files
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+  with_items:
+    - "{{ mongodb_cluster_replica_set.config_dir }}"
+
+- name: copy configuration file for mongod
+  template:
+    src: mongod.yml
+    dest: "{{ mongodb_cluster_replica_set.config_dir }}/{{ mongodb_cluster_replica_set.mongod_config_file }}"
+    owner: root
+    group: root
+  notify:
+    - restart and enable {{ service_name }} service
+
+- name: copy configuration file for systemctl
+  template:
+    src: mongod-replica-set.service
+    dest: /lib/systemd/system/{{ service_name }}.service
+    owner: root
+    group: root
+  notify:
+    - call 'sudo systemctl daemon-reload'
+
+- name: copy configuration file for logrotate mongod
+  template:
+    src: mongod.logrotate
+    dest: "/etc/logrotate.d/{{ service_name }}"
+    owner: root
+    group: root
+
+- name: start and enable {{ service_name }} service
+  service:
+    name: "{{ service_name }}"
+    state: started
+    enabled: yes

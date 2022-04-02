@@ -1,0 +1,14 @@
+[Unit]
+Description=MongoDB
+Documentation=https://www.mongodb.com/docs/manual/
+After=syslog.target
+
+[Service]
+User=mongod
+Group=mongod
+ExecStart={{ mongodb_cluster_replica_set.install_dir }}/bin/mongod -f {{ mongodb_cluster_replica_set.config_dir }}/{{ mongodb_cluster_replica_set.mongod_config_file }}
+KillSignal=15
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target

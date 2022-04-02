@@ -1,3 +1,3 @@
 ## ansible-playbooks-clusters
 
-是时候使用[Ansible](https://ansible.com/)了
+* [MongoDB](_wiki/mongodb-replica-set)

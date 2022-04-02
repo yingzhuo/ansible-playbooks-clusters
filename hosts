@@ -1,28 +1,10 @@
 10.211.55.3 ansible_ssh_user=root ansible_ssh_port=22 ansible_become=no ansible_become_user=root ansible_become_method=sudo
 
-[webserver]
+[mongodb_cluster_replica_set_1]
 10.211.55.3
 
-[efk]
+[mongodb_cluster_replica_set_2]
 10.211.55.3
 
-[kube]
-10.211.55.3
-
-[mysql]
-10.211.55.3
-
-[mongodb]
-10.211.55.3
-
-[redis]
-10.211.55.3
-
-[zabbix_server]
-10.211.55.3
-
-[zabbix_agent]
-10.211.55.3
-
-[wordpress]
+[mongodb_cluster_replica_set_arbiter]
 10.211.55.3

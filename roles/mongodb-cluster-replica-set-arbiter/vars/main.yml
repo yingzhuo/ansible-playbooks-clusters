@@ -1,0 +1,14 @@
+replication_set_name: "my-replication-set"
+
+service_name: "mongod-replica-set-arbiter"
+
+mongodb_cluster_replica_set:
+  port: 27019
+  install_dir: "/usr/local/mongodb"
+  data_dir: "/data/mongodb/replica-set-arbiter"
+  config_dir: "/etc/mongodb/replica-set-arbiter"
+  mongod_config_file: "mongod.yml"
+  log_dir: "/var/log/mongodb/replica-set-arbiter"
+  log_file: "mongod.log"
+  pid_dir: "/var/run/mongodb"
+  pid_file: "replica-set-arbiter.pid"
