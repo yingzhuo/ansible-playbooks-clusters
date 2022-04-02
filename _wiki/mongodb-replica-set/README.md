@@ -1,12 +1,14 @@
 ## MongoDB主从集群 集群搭建
 
+![replica-set-primary-with-secondary-and-arbiter](./replica-set-primary-with-secondary-and-arbiter.svg)
+
 命令:
 
 ```bash
 ansible-playbook ./playbook.mongodb-rs.yml -v
 ```
 
-安装完成后要登录到mongodb任意一个节点初始化整个集群。
+安装完成后要登录到`27017`节点任意一个节点初始化整个集群。
 
 ```javascript
 // _id 务必指定为集群名称
