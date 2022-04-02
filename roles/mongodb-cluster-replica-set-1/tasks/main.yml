@@ -75,7 +75,7 @@
 
 - name: copy configuration file for mongod
   template:
-    src: mongod.yml
+    src: mongod.yml.j2
     dest: "{{ mongodb_cluster_replica_set.config_dir }}/{{ mongodb_cluster_replica_set.mongod_config_file }}"
     owner: root
     group: root
@@ -84,7 +84,7 @@
 
 - name: copy configuration file for systemctl
   template:
-    src: mongod-replica-set.service
+    src: mongod-replica-set.service.j2
     dest: /lib/systemd/system/{{ service_name }}.service
     owner: root
     group: root
@@ -93,7 +93,7 @@
 
 - name: copy configuration file for logrotate mongod
   template:
-    src: mongod.logrotate
+    src: mongod.logrotate.j2
     dest: "/etc/logrotate.d/{{ service_name }}"
     owner: root
     group: root
