@@ -19,6 +19,24 @@
     shell: /usr/sbin/nologin
     state: present
 
+- name: update /etc/security/limits.conf
+  blockinfile:
+    path: /etc/security/limits.conf
+    marker: "# {mark} 由Ansible添加"
+    marker_begin: "begin"
+    marker_end: "end"
+    block: |
+      mongod soft noproc 65535
+      mongod hard noproc 65535
+
+- name: disable transparent huge pages
+  shell:
+    cmd: "{{ item }}"
+  with_items:
+    - "echo never > /sys/kernel/mm/transparent_hugepage/enabled"
+    - "echo never > /sys/kernel/mm/transparent_hugepage/defrag"
+  changed_when: false
+
 - name: create directores for data files
   file:
     path: "{{ item }}"

@@ -11,5 +11,19 @@ ExecStart={{ mongodb_cluster_replica_set.install_dir }}/bin/mongod -f {{ mongodb
 KillSignal=15
 SuccessExitStatus=143
 
+# Other directives omitted
+# (file size)
+LimitFSIZE=infinity
+# (cpu time)
+LimitCPU=infinity
+# (virtual memory size)
+LimitAS=infinity
+# (locked-in-memory size)
+LimitMEMLOCK=infinity
+# (open files)
+LimitNOFILE=64000
+# (processes/threads)
+LimitNPROC=64000
+
 [Install]
 WantedBy=multi-user.target
