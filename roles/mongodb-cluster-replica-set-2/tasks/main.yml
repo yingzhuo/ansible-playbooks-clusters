@@ -46,6 +46,21 @@
   with_items:
     - "{{ mongodb_cluster_replica_set.data_dir }}"
 
+- name: create directores for key files
+  file:
+    path: "{{ mongodb_cluster_replica_set.install_dir }}/keys"
+    state: directory
+    owner: mongod
+    group: mongod
+
+- name: copy key files
+  copy:
+    src: "mongodb.key"
+    dest: "{{ mongodb_cluster_replica_set.install_dir }}/keys/mongodb.key"
+    owner: mongod
+    group: mongod
+    mode: "0400"
+
 - name: create directores for log files
   file:
     path: "{{ item }}"

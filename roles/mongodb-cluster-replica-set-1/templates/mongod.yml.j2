@@ -45,7 +45,10 @@ storage:
 security:
 
   # 认证
-  authorization: disabled
+  authorization: enabled
+
+  # key文件
+  keyFile: {{ mongodb_cluster_replica_set.install_dir }}/keys/mongodb.key
 
 processManagement:
 
