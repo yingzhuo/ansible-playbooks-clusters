@@ -8,7 +8,7 @@ install_dir: "/usr/local/mongodb"
 service_name: "mongod-replica-set-arbiter"
 
 # 端口
-port: 27019
+listen_port: 27019
 
 # 数据目录
 data_dir: "/data/mongodb/replica-set-arbiter"
@@ -30,3 +30,6 @@ pid_dir: "/var/run/mongodb"
 
 # pid文件名
 pid_file: "replica-set-arbiter.pid"
+
+# 是否要求MongoDB开启认证
+auth: "enabled"

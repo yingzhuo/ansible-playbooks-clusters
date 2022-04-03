@@ -24,7 +24,7 @@ systemLog:
 net:
 
   # 监听端口
-  port: {{ port }}
+  port: {{ listen_port }}
 
   # 是否绑定所有网卡
   bindIpAll: true
@@ -45,7 +45,7 @@ storage:
 security:
 
   # 认证
-  authorization: enabled
+  authorization: {{ auth }}
 
   # key文件
   keyFile: {{ install_dir }}/keys/mongodb.key

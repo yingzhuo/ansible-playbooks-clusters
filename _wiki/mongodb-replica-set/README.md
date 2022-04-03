@@ -1,14 +1,13 @@
-## MongoDB主从集群 集群搭建
+## MongoDB副本集 (replica set)
 
-#### 命令
+##### (1) 建设集群
 
 ```bash
-ansible-playbook ./playbook.mongodb-rs.yml -v
+# 先不让集群开启密码认证
+ansible-playbook ./playbook.mongodb-rs.yml -e "auth=disabled" -v
 ```
 
-#### 其他
-
-##### (1) 安装完成后要登录到`27017`节点初始化整个集群。
+##### (2) 安装完成后要登录到`27017`节点初始化整个集群。
 
 ```javascript
 // _id 务必指定为集群名称
@@ -29,7 +28,7 @@ rsconfig = {
 rs.initiate(rsconfig)
 ```
 
-##### (2) 创建`root`用户
+##### (3) 创建`root`用户
 
 ```javascript
 db.createUser(
@@ -49,14 +48,22 @@ db.createUser(
 )
 ```
 
+##### (4) 开启密码验证
+
+```bash
+# 重启集群并开启密码认证
+ansible-playbook ./playbook.mongodb-rs.yml -e "auth=enabled" -v
+```
+
 之后就可以已以下的uri访问集群了。
 
-```
+```txt
 mongodb://root:root@10.211.55.3:27017,10.211.55.3:27018,10.211.55.3:27019/test?authSource=admin&ssl=false
 ```
 
-##### (3) keyfile生成方式
+#### 其他 
 
 ```bash
+# keyfile生成方式
 openssl rand -base64 90 -out ./mongodb.key
 ```
