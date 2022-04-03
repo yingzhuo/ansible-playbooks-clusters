@@ -1,4 +1,4 @@
-{{ mongodb_cluster_replica_set.log_dir }}/{{ mongodb_cluster_replica_set.log_file }} {
+{{ log_dir }}/{{ log_file }} {
     create 0600 mongod mongod
     daily
     rotate 10
@@ -9,6 +9,6 @@
     dateext
     sharedscripts
     postrotate
-        kill -USR1 `cat {{ mongodb_cluster_replica_set.pid_dir }}/{{ mongodb_cluster_replica_set.pid_file }}` > /dev/null 2>&1 || true
+        kill -USR1 `cat {{ pid_dir }}/{{ pid_file }}` > /dev/null 2>&1 || true
     endscript
 }

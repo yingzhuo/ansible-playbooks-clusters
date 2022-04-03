@@ -1,17 +1,17 @@
 - name: install mongodb replica set cluster (no.1)
   hosts: mongodb_cluster_replica_set_1
-  gather_facts: yes
+  gather_facts: no
   roles:
     - mongodb-cluster-replica-set-1
 
 - name: install mongodb replica set cluster (no.2)
   hosts: mongodb_cluster_replica_set_2
-  gather_facts: yes
+  gather_facts: no
   roles:
     - mongodb-cluster-replica-set-2
 
 - name: install mongodb replica set cluster (arbiter)
   hosts: mongodb_cluster_replica_set_arbiter
-  gather_facts: yes
+  gather_facts: no
   roles:
     - mongodb-cluster-replica-set-arbiter

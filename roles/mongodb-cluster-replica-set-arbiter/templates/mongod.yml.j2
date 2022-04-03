@@ -10,7 +10,7 @@ systemLog:
   destination: file
 
   # 日志目录
-  path: {{ mongodb_cluster_replica_set.log_dir }}/{{ mongodb_cluster_replica_set.log_file }}
+  path: {{ log_dir }}/{{ log_file }}
 
   # 日志追加
   logAppend: true
@@ -24,7 +24,7 @@ systemLog:
 net:
 
   # 监听端口
-  port: {{ mongodb_cluster_replica_set.port }}
+  port: {{ port }}
 
   # 是否绑定所有网卡
   bindIpAll: true
@@ -40,7 +40,7 @@ net:
 storage:
 
   # 数据存储目录
-  dbPath: {{ mongodb_cluster_replica_set.data_dir }}
+  dbPath: {{ data_dir }}
 
 security:
 
@@ -48,12 +48,12 @@ security:
   authorization: enabled
 
   # key文件
-  keyFile: {{ mongodb_cluster_replica_set.install_dir }}/keys/mongodb.key
+  keyFile: {{ install_dir }}/keys/mongodb.key
 
 processManagement:
 
   # pid文件
-  pidFilePath: {{ mongodb_cluster_replica_set.pid_dir }}/{{ mongodb_cluster_replica_set.pid_file }}
+  pidFilePath: {{ pid_dir }}/{{ pid_file }}
 
 replication:
 

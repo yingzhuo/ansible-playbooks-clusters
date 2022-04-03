@@ -1,14 +1,32 @@
+# 集群名称
 replication_set_name: "my-replication-set"
 
+# 安装目录
+install_dir: "/usr/local/mongodb"
+
+# 服务名称
 service_name: "mongod-replica-set-2"
 
-mongodb_cluster_replica_set:
-  port: 27018
-  install_dir: "/usr/local/mongodb"
-  data_dir: "/data/mongodb/replica-set-2"
-  config_dir: "/etc/mongodb/replica-set-2"
-  mongod_config_file: "mongod.yml"
-  log_dir: "/var/log/mongodb/replica-set-2"
-  log_file: "mongod.log"
-  pid_dir: "/var/run/mongodb"
-  pid_file: "replica-set-2.pid"
+# 端口
+port: 27018
+
+# 数据目录
+data_dir: "/data/mongodb/replica-set-2"
+
+# 主配置目录
+config_dir: "/etc/mongodb/replica-set-2"
+
+# mongod主配置文件
+mongod_config_file: "mongod.yml"
+
+# 日志目录
+log_dir: "/var/log/mongodb/replica-set-2"
+
+# 日志文件名
+log_file: "mongod.log"
+
+# pid文件目录
+pid_dir: "/var/run/mongodb"
+
+# pid文件名
+pid_file: "replica-set-2.pid"

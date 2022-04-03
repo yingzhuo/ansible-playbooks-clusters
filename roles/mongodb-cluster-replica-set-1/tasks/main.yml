@@ -44,11 +44,11 @@
     owner: mongod
     group: mongod
   with_items:
-    - "{{ mongodb_cluster_replica_set.data_dir }}"
+    - "{{ data_dir }}"
 
 - name: create directores for key files
   file:
-    path: "{{ mongodb_cluster_replica_set.install_dir }}/keys"
+    path: "{{ install_dir }}/keys"
     state: directory
     owner: mongod
     group: mongod
@@ -56,7 +56,7 @@
 - name: copy key files
   copy:
     src: "mongodb.key"
-    dest: "{{ mongodb_cluster_replica_set.install_dir }}/keys/mongodb.key"
+    dest: "{{ install_dir }}/keys/mongodb.key"
     owner: mongod
     group: mongod
     mode: "0400"
@@ -68,7 +68,7 @@
     owner: mongod
     group: mongod
   with_items:
-    - "{{ mongodb_cluster_replica_set.log_dir }}"
+    - "{{ log_dir }}"
 
 - name: create directores for pid files
   file:
@@ -77,7 +77,14 @@
     owner: mongod
     group: mongod
   with_items:
-    - "{{ mongodb_cluster_replica_set.pid_dir }}"
+    - "{{ pid_dir }}"
+
+- name: copy tmpfiles recreate configuration file
+  template:
+    src: tmpfiles.mongodb.conf.j2
+    dest: /etc/tmpfiles.d/mongodb.conf
+    owner: root
+    group: root
 
 - name: create directores for configuration files
   file:
@@ -86,12 +93,12 @@
     owner: root
     group: root
   with_items:
-    - "{{ mongodb_cluster_replica_set.config_dir }}"
+    - "{{ config_dir }}"
 
 - name: copy configuration file for mongod
   template:
     src: mongod.yml.j2
-    dest: "{{ mongodb_cluster_replica_set.config_dir }}/{{ mongodb_cluster_replica_set.mongod_config_file }}"
+    dest: "{{ config_dir }}/{{ mongod_config_file }}"
     owner: root
     group: root
   notify:
