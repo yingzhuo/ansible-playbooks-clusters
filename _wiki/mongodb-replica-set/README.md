@@ -8,7 +8,7 @@ ansible-playbook ./playbook.mongodb-rs.yml -v
 
 #### 其他
 
-(1) 安装完成后要登录到`27017`节点初始化整个集群。
+##### (1) 安装完成后要登录到`27017`节点初始化整个集群。
 
 ```javascript
 // _id 务必指定为集群名称
@@ -29,7 +29,7 @@ rsconfig = {
 rs.initiate(rsconfig)
 ```
 
-(2) 创建`root`用户
+##### (2) 创建`root`用户
 
 ```javascript
 db.createUser(
@@ -39,10 +39,24 @@ db.createUser(
         roles: [{role: "root", db: "admin"}]
     }
 )
+
+db.createUser(
+    {
+        user: "test",
+        pwd: "test",
+        roles: [{role: "readWrite", db: "test"}]
+    }
+)
 ```
 
 之后就可以已以下的uri访问集群了。
 
 ```
 mongodb://root:root@10.211.55.3:27017,10.211.55.3:27018,10.211.55.3:27019/test?authSource=admin&ssl=false
+```
+
+##### (3) keyfile生成方式
+
+```bash
+openssl rand -base64 90 -out ./mongodb.key
 ```
