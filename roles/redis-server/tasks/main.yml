@@ -1,3 +1,10 @@
+- name: copy redis.conf.template to install directory
+  copy:
+    src: redis.conf.template
+    dest: "{{ install_dir }}/redis.conf.template"
+    owner: root
+    group: root
+
 - name: create data directoies
   file:
     path: "{{ data_dir }}"
