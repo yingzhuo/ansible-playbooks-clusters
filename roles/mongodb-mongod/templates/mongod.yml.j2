@@ -47,7 +47,7 @@ security:
   # 认证
   authorization: {{ auth }}
 
-{% if clusterType != 'standalone' %}
+{% if clusterType != 'standalone' and auth == 'enabled' %}
   # key文件
   keyFile: {{ install_dir }}/keys/mongodb.key
 {% endif %}

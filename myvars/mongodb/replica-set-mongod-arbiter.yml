@@ -1,26 +1,26 @@
 # 集群名称
-replication_set_name: "myrs"
+replication_set_name: "my-replica-set"
 
 # 安装目录
 install_dir: "/usr/local/mongodb"
 
 # 服务名称
-service_name: "mongod"
+service_name: "mongod-rs-arbiter"
 
 # 端口
-listen_port: 27017
+listen_port: 27019
 
 # 数据目录
-data_dir: "/data/mongodb"
+data_dir: "/data/mongodb/rs-arbiter"
 
 # 主配置目录
 config_dir: "/etc/mongodb"
 
 # mongod主配置文件
-mongod_config_file: "mongod.yml"
+mongod_config_file: "mongod-rs-arbiter.yml"
 
 # 日志目录
-log_dir: "/var/log/mongodb"
+log_dir: "/var/log/mongodb/rs-arbiter"
 
 # 日志文件名
 log_file: "mongod.log"
@@ -29,9 +29,9 @@ log_file: "mongod.log"
 pid_dir: "/var/run/mongodb"
 
 # pid文件名
-pid_file: "mongod.pid"
+pid_file: "mongod-rs-arbiter.pid"
 
 # 是否要求MongoDB开启认证
 auth: "enabled"
 
-clusterType: "standalone"
+clusterType: "replica-set"

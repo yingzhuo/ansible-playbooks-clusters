@@ -2,3 +2,12 @@
 
 [mongodb_standalone]
 10.211.55.3
+
+[mongodb_rs_1]
+10.211.55.3
+
+[mongodb_rs_2]
+10.211.55.3
+
+[mongodb_rs_arbiter]
+10.211.55.3

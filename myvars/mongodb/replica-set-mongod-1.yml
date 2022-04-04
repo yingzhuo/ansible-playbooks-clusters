@@ -1,0 +1,37 @@
+# 集群名称
+replication_set_name: "my-replica-set"
+
+# 安装目录
+install_dir: "/usr/local/mongodb"
+
+# 服务名称
+service_name: "mongod-rs-1"
+
+# 端口
+listen_port: 27017
+
+# 数据目录
+data_dir: "/data/mongodb/rs-1"
+
+# 主配置目录
+config_dir: "/etc/mongodb"
+
+# mongod主配置文件
+mongod_config_file: "mongod-rs-1.yml"
+
+# 日志目录
+log_dir: "/var/log/mongodb/rs-1"
+
+# 日志文件名
+log_file: "mongod.log"
+
+# pid文件目录
+pid_dir: "/var/run/mongodb"
+
+# pid文件名
+pid_file: "mongod-rs-1.pid"
+
+# 是否要求MongoDB开启认证
+auth: "enabled"
+
+clusterType: "replica-set"
