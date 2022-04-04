@@ -47,15 +47,22 @@ security:
   # 认证
   authorization: {{ auth }}
 
+{% if clusterType != 'standalone' %}
   # key文件
   keyFile: {{ install_dir }}/keys/mongodb.key
+{% endif %}
 
 processManagement:
+
+  # fork为true为后台模式
+  fork: false
 
   # pid文件
   pidFilePath: {{ pid_dir }}/{{ pid_file }}
 
+{% if clusterType != 'standalone' %}
 replication:
 
   # 副本级名称
   replSetName: {{ replication_set_name }}
+{% endif %}

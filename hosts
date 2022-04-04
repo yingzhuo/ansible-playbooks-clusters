@@ -1,10 +1,4 @@
 10.211.55.3 ansible_ssh_user=root ansible_ssh_port=22 ansible_become=no ansible_become_user=root ansible_become_method=sudo
 
-[mongodb_cluster_replica_set_1]
-10.211.55.3
-
-[mongodb_cluster_replica_set_2]
-10.211.55.3
-
-[mongodb_cluster_replica_set_arbiter]
+[mongodb_standalone]
 10.211.55.3

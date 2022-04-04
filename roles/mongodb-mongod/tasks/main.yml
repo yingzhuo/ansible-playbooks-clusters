@@ -120,6 +120,11 @@
     owner: root
     group: root
 
+- name: call 'sudo systemctl daemon-reload'
+  shell:
+    cmd: "sudo systemctl daemon-reload"
+  changed_when: no
+
 - name: start and enable {{ service_name }} service
   service:
     name: "{{ service_name }}"

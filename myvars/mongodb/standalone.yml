@@ -1,26 +1,26 @@
 # 集群名称
-replication_set_name: "my-replication-set"
+replication_set_name: "myrs"
 
 # 安装目录
 install_dir: "/usr/local/mongodb"
 
 # 服务名称
-service_name: "mongod-replica-set-2"
+service_name: "mongod"
 
 # 端口
-listen_port: 27018
+listen_port: 27017
 
 # 数据目录
-data_dir: "/data/mongodb/replica-set-2"
+data_dir: "/data/mongodb"
 
 # 主配置目录
-config_dir: "/etc/mongodb/replica-set-2"
+config_dir: "/etc/mongodb"
 
 # mongod主配置文件
 mongod_config_file: "mongod.yml"
 
 # 日志目录
-log_dir: "/var/log/mongodb/replica-set-2"
+log_dir: "/var/log/mongodb"
 
 # 日志文件名
 log_file: "mongod.log"
@@ -29,7 +29,9 @@ log_file: "mongod.log"
 pid_dir: "/var/run/mongodb"
 
 # pid文件名
-pid_file: "replica-set-2.pid"
+pid_file: "mongod.pid"
 
 # 是否要求MongoDB开启认证
 auth: "enabled"
+
+clusterType: "standalone"

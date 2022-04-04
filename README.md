@@ -1,3 +1,7 @@
 ## ansible-playbooks-clusters
 
-* [MongoDB](_wiki/mongodb-replica-set)
+## 说明
+
+#### MongoDB
+
+* [standalone](./_wiki/mongodb-standalone.md)
