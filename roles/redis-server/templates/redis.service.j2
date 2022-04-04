@@ -1,0 +1,15 @@
+[Unit]
+Description=Redis
+Documentation=https://redis.io/docs/
+After=syslog.target
+
+[Service]
+Type=simple
+User=redis
+Group=redis
+ExecStart={{ install_dir }}/bin/redis-server {{ config_dir }}/{{ service_name }}.conf
+KillSignal=15
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target

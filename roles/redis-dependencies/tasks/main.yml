@@ -1,0 +1,24 @@
+- name: install dependencies libs
+  yum:
+    name:
+      - make
+      - autoconf
+      - gcc
+      - gcc-c++
+      - pcre-devel
+      - openssl-devel
+      - zlib-devel
+    state: present
+
+- name: create group for redis
+  group:
+    name: redis
+    state: present
+
+- name: crete user for redis
+  user:
+    name: redis
+    group: redis
+    create_home: no
+    shell: /usr/sbin/nologin
+    state: present

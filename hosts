@@ -11,3 +11,6 @@
 
 [mongodb_rs_arbiter]
 10.211.55.3
+
+[redis_standalone]
+10.211.55.3

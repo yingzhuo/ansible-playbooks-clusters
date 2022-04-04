@@ -1,0 +1,121 @@
+- name: create data directoies
+  file:
+    path: "{{ data_dir }}"
+    state: directory
+    owner: redis
+    group: redis
+
+- name: create bin directory in install directoies
+  file:
+    path: "{{ install_dir }}/bin"
+    state: directory
+    owner: root
+    group: root
+
+- name: create configuration directoies
+  file:
+    path: "{{ config_dir }}"
+    state: directory
+    owner: root
+    group: root
+
+- name: create pid directoies
+  file:
+    path: "{{ pid_dir }}"
+    state: directory
+    owner: redis
+    group: redis
+
+- name: create log directoies
+  file:
+    path: "{{ log_dir }}"
+    state: directory
+    owner: redis
+    group: redis
+
+- name: test if redis already installed
+  stat:
+    path: "{{ install_dir }}/bin/redis-server"
+  register: files_found
+
+- name: download source code of redis
+  unarchive:
+    src: "{{ source_code_download_url }}"
+    dest: /tmp
+    remote_src: yes
+  when: files_found.stat.exists == false
+
+- name: compile source code of redis
+  shell:
+    cmd: "cd /tmp/redis-stable && make"
+  when: files_found.stat.exists == false
+
+- name: copy binary file to install directory
+  shell:
+    cmd: "cp /tmp/redis-stable/src/{{ item }} {{ install_dir }}/bin"
+  with_items:
+    - redis-benchmark
+    - redis-check-aof
+    - redis-check-rdb
+    - redis-cli
+    - redis-sentinel
+    - redis-server
+  when: files_found.stat.exists == false
+
+- name: remove source directory
+  file:
+    path: "/tmp/redis-stable"
+    state: absent
+  when: files_found.stat.exists == false
+
+- name: copy redis configuration file
+  template:
+    src: redis.conf.j2
+    dest: "{{ config_dir }}/{{ service_name }}.conf"
+    owner: root
+    group: root
+  notify:
+    - restart redis
+
+- name: copy log rotate configuration file
+  template:
+    src: redis.logrotate.j2
+    dest: "/etc/logrotate.d/{{ service_name }}"
+    owner: root
+    group: root
+
+- name: copy {{ service_name }}.service file
+  template:
+    src: redis.service.j2
+    dest: "/lib/systemd/system/{{ service_name }}.service"
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - call 'sudo systemctl daemon-reload'
+    - restart redis
+
+- name: call 'sudo systemctl daemon-reload'
+  shell:
+    cmd: "sudo systemctl daemon-reload"
+  changed_when: no
+
+- name: copy log rotate configuration file
+  template:
+    src: redis.logrotate.j2
+    dest: "/etc/logrotate.d/{{ service_name }}"
+    owner: root
+    group: root
+
+- name: copy tmpfiles recreate configuration file
+  template:
+    src: tmpfiles.redis.conf.j2
+    dest: /etc/tmpfiles.d/redis.conf
+    owner: root
+    group: root
+
+- name: start and enable redis service
+  service:
+    name: "{{ service_name }}"
+    state: started
+    enabled: yes

@@ -1,0 +1,21 @@
+################################## NETWORK #####################################
+bind            *
+port            {{ listen_port }}
+tcp-keepalive   300
+
+################################# GENERAL #####################################
+daemonize       no
+loglevel        notice
+logfile         {{ log_dir }}/{{ log_file }}
+pidfile         {{ pid_dir }}/{{ pid_file }}
+syslog-enabled  no
+dir             {{ data_dir }}
+databases       16
+
+############################## APPEND ONLY MODE ###############################
+appendonly      yes
+
+################################## SECURITY ###################################
+{% if redis_password != '' %}
+requirepass     {{ redis_password }}
+{% endif %}

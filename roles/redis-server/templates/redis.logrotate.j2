@@ -1,0 +1,14 @@
+{{ log_dir }}/{{ log_file }} {
+    create 0644 redis redis
+    daily
+    rotate 10
+    missingok
+    notifempty
+    compress
+    delaycompress
+    dateext
+    sharedscripts
+    postrotate
+        /usr/bin/true
+    endscript
+}
