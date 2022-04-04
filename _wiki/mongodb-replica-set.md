@@ -58,7 +58,7 @@ db.createUser(
 exit
 ```
 
-#### 重启`MongoDB`并开启认证
+#### 重启`MongoDB`集群并开启认证
 
 ```bash
 ansible-playbook playbook.mongodb-node.yml -e @./myvars/mongodb/replica-set-mongod-1.yml \
@@ -74,17 +74,17 @@ ansible-playbook playbook.mongodb-node.yml -e @./myvars/mongodb/replica-set-mong
   -e "auth=enabled"
 ```
 
-#### 删除节点(可选)
+#### 删除集群(可选)
 
 ```bash
 ansible-playbook playbook.mongodb-node-remove.yml -e @./myvars/mongodb/replica-set-mongod-1.yml \
-	-e "HOSTS=mongodb_rs_1"
+  -e "HOSTS=mongodb_rs_1"
 
 ansible-playbook playbook.mongodb-node-remove.yml -e @./myvars/mongodb/replica-set-mongod-2.yml \
-	-e "HOSTS=mongodb_rs_2"
+  -e "HOSTS=mongodb_rs_2"
 
 ansible-playbook playbook.mongodb-node-remove.yml -e @./myvars/mongodb/replica-set-mongod-arbiter.yml \
-	-e "HOSTS=mongodb_rs_arbiter"
+  -e "HOSTS=mongodb_rs_arbiter"
 ```
 
 *注意：*将删除所有的数据和配置文件但不会卸载依赖的软件和系统配置。

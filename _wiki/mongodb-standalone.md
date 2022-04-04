@@ -40,7 +40,7 @@ ansible-playbook playbook.mongodb-node.yml -e @./myvars/mongodb/standalone.yml \
 
 ```bash
 ansible-playbook playbook.mongodb-node-remove.yml -e @./myvars/mongodb/standalone.yml \
-	-e "HOSTS=mongodb_standalone"
+  -e "HOSTS=mongodb_standalone"
 ```
 
 *注意：*将删除所有的数据和配置文件但不会卸载依赖的软件和系统配置。
