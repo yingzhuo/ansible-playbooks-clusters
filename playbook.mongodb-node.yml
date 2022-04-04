@@ -1,4 +1,4 @@
-- name: install/setup mongodb replica set node
+- name: install/setup mongodb node
   hosts: "{{ HOSTS }}"
   gather_facts: no
   roles:

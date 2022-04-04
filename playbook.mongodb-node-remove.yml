@@ -1,0 +1,5 @@
+- name: remove mongodb node
+  hosts: "{{ HOSTS }}"
+  gather_facts: no
+  roles:
+    - mongodb-mongod-remove
