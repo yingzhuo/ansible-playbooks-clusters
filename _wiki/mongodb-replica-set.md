@@ -54,8 +54,6 @@ db.createUser(
         roles: [{role: "root", db: "admin"}]
     }
 )
-
-exit
 ```
 
 #### 重启`MongoDB`集群并开启认证
