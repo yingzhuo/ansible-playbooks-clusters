@@ -54,3 +54,15 @@
     cmd: "rm -rf /tmp/percona-toolkit-*"
   changed_when: no
   when: files_found.stat.exists == false
+
+- name: create percona toolkit configuration directory
+  file:
+    path: "/etc/percona-toolkit"
+    state: directory
+    owner: root
+    group: root
+
+- name: copy configuration file
+  template:
+    src: percona-toolkit.conf.j2
+    dest: "/etc/percona-toolkit/percona-toolkit.conf"
