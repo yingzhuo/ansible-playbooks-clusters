@@ -1,15 +1,28 @@
+# 服务名称
 service_name: "mysqld"
 
+# 安装目录
 install_dir: "/usr/local/mysql"
 
+# 数据目录
 data_dir: "/data/mysql"
 
+# 配置目录
 config_dir: "/etc/mysql"
 
+# 监听端口
 listen_port: 3306
 
+# 错误日志名
 error_log: "error.log"
 
+# 慢查询日期名
 slow_log: "slow.log"
 
+# 通用日志名
 general_log: "general.log"
+
+# 客户端相关配置
+client:
+  username: "root"
+  password: "root"

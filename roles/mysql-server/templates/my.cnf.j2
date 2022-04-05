@@ -2,8 +2,8 @@
 [client]
 protocol                                = TCP
 host                                    = 127.0.0.1
-user                                    = root
-password                                = root
+user                                    = {{ client.username }}
+password                                = {{ client.password }}
 
 # ======================================================================================================================
 [mysql]
@@ -19,8 +19,8 @@ skip_auto_rehash                        = ON
 user                                    = mysql                                                                         # 启动用户
 basedir                                 = {{ install_dir }}                                                             # 安装目录
 datadir                                 = {{ data_dir }}                                                                # 数据目录
-port                                    = 3306                                                                          # 监听端口
 bind_address                            = *                                                                             # 多网卡时绑定哪一个网卡
+port                                    = {{ listen_port }}                                                             # 监听端口
 
 # -----------------
 # 字符集相关
