@@ -1,0 +1,56 @@
+- name: install dependencies
+  yum:
+    name:
+      - perl-Time-HiRes
+      - perl-DBI
+      - perl-DBD-MySQL
+      - perl-IO-Socket-IP
+      - perl-IO-Socket-SSL
+      - perl-Net-LibIDN
+      - perl-Net-SSLeay
+      - perl-ExtUtils-CBuilder
+      - perl-ExtUtils-MakeMaker
+      - perl-CPAN
+      - perl-Digest-MD5
+      - gdb
+      - strace
+    state: present
+
+- name: test if percona toolkit already installed
+  stat:
+    path: "{{ toolkit.install_dir }}/pt-online-schema-change"
+  register: files_found
+
+- name: create install directory - '{{ toolkit.install_dir }}'
+  file:
+    path: "{{ toolkit.install_dir }}"
+    state: directory
+    owner: root
+    group: root
+  when: files_found.stat.exists == false
+
+- name: download and install toolkit
+  unarchive:
+    src: "{{ toolkit.download_url }}"
+    dest: /tmp
+    remote_src: yes
+  when: files_found.stat.exists == false
+
+- name: copy exec files to install directory
+  shell:
+    cmd: "mv /tmp/percona-toolkit-*/bin/* {{ toolkit.install_dir }}"
+  when: files_found.stat.exists == false
+
+- name: set owner and group for isntall directory
+  file:
+    path: "{{ toolkit.install_dir }}"
+    owner: root
+    group: root
+    recurse: true
+  when: files_found.stat.exists == false
+
+- name: remove temp files
+  shell:
+    cmd: "rm -rf /tmp/percona-toolkit-*"
+  changed_when: no
+  when: files_found.stat.exists == false

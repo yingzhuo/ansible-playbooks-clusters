@@ -5,6 +5,7 @@
 #### MySQL
 
 * [standalone](./_wiki/mysql-standalone.md)
+* [percona-toolkit](./_wiki/percona-toolkit.md)
 
 #### MongoDB
 

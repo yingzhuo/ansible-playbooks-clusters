@@ -34,3 +34,7 @@ flush privileges;
 ansible-playbook playbook.mysql-node-remove.yml -e @./myvars/mysql/standalone.yml \
   -e "HOSTS=mysql_standalone" -v
 ```
+
+#### 安装`percona-toolkit`工具(可选)
+
+[wiki](./percona-toolkit.md)
