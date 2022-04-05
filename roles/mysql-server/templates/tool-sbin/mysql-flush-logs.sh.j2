@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+ts=$(/bin/date '+%Y.%m.%d.%s')
+
+# 处理通用日志
+if [ -f {{ data_dir }}/{{ general_log }} ]; then
+    /usr/bin/mv {{ data_dir }}/{{ general_log }} {{ data_dir }}/{{ general_log }}."$ts"
+    {{ install_dir }}/bin/mysql -e "FLUSH GENERAL LOGS;"
+fi
+
+# 处理错误日志
+if [ -f {{ data_dir }}/{{ error_log }} ]; then
+    /usr/bin/mv {{ data_dir }}/{{ error_log }} {{ data_dir }}/{{ error_log }}."$ts"
+    {{ install_dir }}/bin/mysql -e "FLUSH ERROR LOGS;"
+fi
+
+# 处理慢查询日志
+if [ -f {{ data_dir }}/{{ slow_log }} ]; then
+    /usr/bin/mv {{ data_dir }}/{{ slow_log }} {{ data_dir }}/{{ slow_log }}."$ts"
+    {{ install_dir }}/bin/mysql -e "FLUSH SLOW LOGS;"
+fi

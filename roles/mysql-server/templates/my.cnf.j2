@@ -1,0 +1,111 @@
+# ======================================================================================================================
+[client]
+protocol                                = TCP
+host                                    = 127.0.0.1
+user                                    = root
+password                                = root
+
+# ======================================================================================================================
+[mysql]
+prompt                                  = (\\u@\\h:\\p) [\\d]>\\_
+skip_auto_rehash                        = ON
+
+# ======================================================================================================================
+[mysqld]
+
+# -----------------
+# 基本配置
+# -----------------
+user                                    = mysql                                                                         # 启动用户
+basedir                                 = {{ install_dir }}                                                             # 安装目录
+datadir                                 = {{ data_dir }}                                                                # 数据目录
+port                                    = 3306                                                                          # 监听端口
+bind_address                            = *                                                                             # 多网卡时绑定哪一个网卡
+
+# -----------------
+# 字符集相关
+# -----------------
+character_set_server                    = utf8mb4
+collation_server                        = utf8mb4_bin
+
+# -----------------
+# 安全相关
+# -----------------
+require_secure_transport                = OFF                                                                           # 是否强制要求使用SSL连接
+default_authentication_plugin           = mysql_native_password                                                         # 默认认证插件
+
+# -----------------
+# SQL MODE
+# -----------------
+sql_mode                                = ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+
+# -----------------
+# 日志相关
+# -----------------
+log_timestamps                          = SYSTEM                                                                        # 日志时区不使用UTC 而跟随系统
+log_output                              = FILE                                                                          # 通用日志和慢查询日志记录格式 (FILE | TABLE)
+
+log_error                               = {{ error_log }}                                                               # 错误日志位置
+log_error_verbosity                     = 1                                                                             # 错误日志级别 1级输出最少 3级输出最详细
+
+general_log                             = OFF                                                                           # 通用日志
+general_log_file                        = {{ general_log }}                                                             # 通用日志位置
+
+slow_query_log                          = ON                                                                            # 慢查询日志
+slow_query_log_file                     = {{ slow_log }}                                                                # 慢查询日志位置
+long_query_time                         = 5.0                                                                           # 慢查询阈值 (秒) (线程被锁时间不包含在内)
+min_examined_row_limit                  = 100                                                                           # 扫描行数小于此值的SQL不记录到慢查询日志
+log_queries_not_using_indexes           = ON                                                                            # 没有使用索引的查询记录到慢查询日志
+log_throttle_queries_not_using_indexes  = 10                                                                            # 限制每分钟同样的没有使用索引而被记录到慢查询的日志的条数
+log_slow_admin_statements               = ON                                                                            # 管理型语句是否也记录到慢查询日志
+log_slow_slave_statements               = OFF                                                                           # 从机的慢查询是否记录
+
+expire_logs_days                        = 30                                                                            # binlog过期时间
+max_binlog_size                         = 1G                                                                            # binlog最大尺寸
+
+# -----------------
+# 事件相关
+# -----------------
+event_scheduler                         = OFF                                                                           # 关闭event
+
+# -----------------
+# 存储引擎相关
+# -----------------
+skip_federated                          = ON                                                                            # 禁用此引擎
+skip_blackhole                          = ON                                                                            # 禁用此引擎
+skip_archive                            = ON                                                                            # 禁用此引擎
+
+# -----------------
+# 缓存相关
+# -----------------
+sort_buffer_size                        = 128M                                                                          # 排序语句可使用缓存
+tmp_table_size                          = 128M                                                                          # 分组语句等产生的临时表
+join_buffer_size                        = 1G                                                                            # 多表关联时外表被关联的列使用缓存，不能使用索引时才使用此动作
+
+# -----------------
+# InnoDB引擎相关
+# -----------------
+innodb_buffer_pool_size                 = 1G
+innodb_page_size                        = 16K                                                                           # 一页大小
+innodb_online_alter_log_max_size        = 1G                                                                            # 执行在线DDL过程中如果遇到对表的操作记录到此内存日志中
+innodb_fill_factor                      = 100                                                                           # 页填充因子 10-100 100: 预留1/16的空间 10: 预留90%的空间
+innodb_log_file_size                    = 2G                                                                            # 重做日志大小
+innodb_flush_neighbors                  = 0                                                                             # SSD硬盘相关参数，使硬盘刷新效率更高
+innodb_io_capacity                      = 4000
+innodb_flush_method                     = O_DIRECT
+
+# -----------------
+# 函数相关
+# -----------------
+group_concat_max_len                    = 4096                                                                          # group_concat()聚合函数能返回的最大值，超过则截断
+
+# -----------------
+# 插件相关
+# -----------------
+
+# "mysqlx" 插件
+skip_mysqlx                             = ON                                                                            # 禁用此插件
+skip_mysqlx_cache_cleaner               = ON                                                                            # 禁用此插件
+
+# "validate_password" 插件
+#plugin_load_add                         = validate_password.so                                                          # 加载插件

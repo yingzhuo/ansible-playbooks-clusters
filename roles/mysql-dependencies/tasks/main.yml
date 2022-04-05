@@ -1,0 +1,27 @@
+# 依赖的库
+- name: install ncurses and more
+  yum:
+    name:
+      - ncurses-libs
+      - ncurses-devel
+      - libaio
+    state: present
+
+# 本工具用于基准测试
+- name: install sysstat
+  yum:
+    name: sysstat
+    state: present
+
+- name: create group for mysqld
+  group:
+    name: mysql
+    state: present
+
+- name: crete user for mysqld
+  user:
+    name: mysql
+    group: mysql
+    create_home: no
+    shell: /usr/sbin/nologin
+    state: present

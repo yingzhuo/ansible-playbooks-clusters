@@ -1,0 +1,26 @@
+- name: stop and disable {{ service_name }}
+  service:
+    name: "{{ service_name }}"
+    state: stopped
+    enabled: no
+  ignore_errors: yes
+
+- name: call 'chkconifg --del {{ service_name }}'
+  shell:
+    cmd: "chkconfig --del {{ service_name }}"
+  ignore_errors: yes
+
+- name: delete files or directories
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "/etc/init.d/{{ service_name }}"
+    - "{{ config_dir }}/my.cnf"
+    - "{{ data_dir }}"
+    - "{{ install_dir }}/tool-sbin"
+
+- name: call 'sudo systemctl daemon-reload'
+  shell:
+    cmd: "sudo systemctl daemon-reload"
+  changed_when: no

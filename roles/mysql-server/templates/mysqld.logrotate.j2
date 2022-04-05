@@ -1,0 +1,20 @@
+{{ data_dir }}/{{ error_log }}
+{{ data_dir }}/{{ slow_log }}
+{{ data_dir }}/{{ general_log }}
+{
+    create 0640 mysql mysql
+    daily
+    rotate 10
+    missingok
+    notifempty
+    compress
+    delaycompress
+    dateext
+    sharedscripts
+    postrotate
+    if test -x {{ install_dir }}/bin/mysqladmin && /usr/bin/mysqladmin ping &>/dev/null
+    then
+        {{ install_dir }}/bin/mysqladmin flush-logs
+    fi
+    endscript
+}

@@ -1,0 +1,15 @@
+service_name: "mysqld"
+
+install_dir: "/usr/local/mysql"
+
+data_dir: "/data/mysql"
+
+config_dir: "/etc/mysql"
+
+listen_port: 3306
+
+error_log: "error.log"
+
+slow_log: "slow.log"
+
+general_log: "general.log"

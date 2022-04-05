@@ -4,7 +4,7 @@
 
 受网络限制，我们不打算采用使用`ansible`下载MongoDB的二进制包。请自行下载并解压到`/usr/local/mongodb`
 
-#### 安装命令
+#### 安装
 
 ```bash
 ansible-playbook playbook.mongodb-node.yml -e @./myvars/mongodb/standalone.yml \

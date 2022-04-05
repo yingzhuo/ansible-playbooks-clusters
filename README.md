@@ -2,6 +2,10 @@
 
 ## 维基
 
+#### MySQL
+
+* [standalone](./_wiki/mysql-standalone.md)
+
 #### MongoDB
 
 * [standalone](./_wiki/mongodb-standalone.md)

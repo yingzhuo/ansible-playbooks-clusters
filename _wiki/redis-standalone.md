@@ -1,6 +1,6 @@
 # 搭建/配置单节点Redis
 
-#### 安装命令
+#### 安装
 
 ```bash
 ansible-playbook playbook.redis-node.yml -e @./myvars/redis/standalone.yml \

@@ -1,0 +1,115 @@
+- name: create data directory - '{{ data_dir }}'
+  file:
+    path: "{{ data_dir }}"
+    state: directory
+    owner: mysql
+    group: mysql
+
+- name: create configuration directory - '{{ config_dir }}'
+  file:
+    path: "{{ config_dir }}"
+    state: directory
+    owner: mysql
+    group: mysql
+
+- name: copy configuration file
+  template:
+    src: my.cnf.j2
+    dest: "{{ config_dir }}/my.cnf"
+    owner: root
+    group: root
+    mode: '0644'
+    backup: no
+  notify: restart mysqld
+
+- name: test if data directory empty
+  find:
+    paths:
+      - "{{ data_dir }}"
+  register: files_found
+
+- name: init data directory
+  shell:
+    cmd: "{{ install_dir }}/bin/mysqld --initialize-insecure --user=mysql --basedir={{ install_dir }} --datadir={{ data_dir }}"
+  when: files_found.matched == 0
+
+- name: setup ssl
+  shell:
+    cmd: "{{ install_dir }}/bin/mysql_ssl_rsa_setup --datadir={{ data_dir }}"
+  when: files_found.matched == 0
+
+- name: install service
+  shell:
+    cmd: "cp {{ install_dir }}/support-files/mysql.server /etc/init.d/{{ service_name }}"
+  changed_when: no
+
+- name: startup mysqld when system reboot
+  shell:
+    cmd: "chkconfig --add {{ service_name }}"
+  changed_when: no
+
+- name: remove unused config files
+  file:
+    path: "{{ item }}"
+    state: absent
+    force: yes
+  with_items:
+    - /etc/my.cnf
+    - /etc/my.cnf.d/
+
+- name: startup mysql
+  service:
+    name: mysql
+    state: started
+
+- name: make tool-bin dir
+  file:
+    path: "{{ install_dir }}/tool-sbin"
+    state: directory
+    owner: mysql
+    group: mysql
+    mode: '0755'
+
+- name: copy tools shells
+  copy:
+    src: "tool-sbin/{{ item }}"
+    dest: "{{ install_dir }}/tool-sbin/{{ item }}"
+    owner: mysql
+    group: mysql
+    mode: '0755'
+    backup: no
+  with_items:
+    - mysql-database-non-utf8mb4.sh
+    - mysql-table-non-innodb.sh
+    - mysql-table-no-primary-key.sh
+    - mysql-column-non-utf8mb4.sh
+    - mysql-index-unused.sh
+    - mysql-index-low-cardinality.sh
+    - mysql-index-compound.sh
+    - mysql-index-redundant.sh
+    - mysql-show-users.sh
+    - mysql-current-binlog.sh
+
+- name: copy mysql-flush-slow.sh
+  template:
+    src: tool-sbin/mysql-flush-logs.sh.j2
+    dest: "{{ install_dir }}/tool-sbin/mysql-flush-logs.sh"
+    owner: mysql
+    group: mysql
+    mode: '0755'
+    backup: no
+
+- name: copy logrotate configuration file
+  template:
+    src: mysqld.logrotate.j2
+    dest: /etc/logrotate.d/mysqld
+    owner: root
+    group: root
+
+- name: set owner and group for install directory
+  file:
+    path: "{{ install_dir }}"
+    state: directory
+    owner: mysql
+    group: mysql
+    recurse: true
