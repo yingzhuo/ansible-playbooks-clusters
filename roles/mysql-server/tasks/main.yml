@@ -106,7 +106,7 @@
     owner: root
     group: root
 
-- name: set owner and group for install directory
+- name: set owner and group for install directory - '{{ install_dir }}'
   file:
     path: "{{ install_dir }}"
     state: directory
