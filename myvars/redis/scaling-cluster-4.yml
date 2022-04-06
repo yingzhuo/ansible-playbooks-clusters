@@ -2,22 +2,22 @@
 source_code_download_url: "https://download.redis.io/redis-stable.tar.gz"
 
 # 服务名称
-service_name: "redis"
+service_name: "redis-sc-4"
 
 # 安装目录
 install_dir: "/usr/local/redis"
 
 # 数据目录
-data_dir: "/data/redis"
+data_dir: "/data/redis/sc-4"
 
 # 主配置目录
-config_dir: "/etc/redis"
+config_dir: "/etc/redis/sc-4"
 
 # 登录密码
 redis_password: "root"
 
 # 日志文件目录
-log_dir: "/var/log/redis"
+log_dir: "/var/log/redis/sc-4"
 
 # 日志文件名
 log_file: "redis.log"
@@ -26,10 +26,10 @@ log_file: "redis.log"
 pid_dir: "/var/run/redis"
 
 # pid文件目录
-pid_file: "redis.pid"
+pid_file: "redis.sc-4.pid"
 
 # port
-listen_port: 6379
+listen_port: 6382
 
 # 集群模式
-cluster_type: "standalone"
+cluster_type: "scaling-cluster"

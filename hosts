@@ -15,5 +15,23 @@
 [redis_standalone]
 10.211.55.3
 
+[redis_sc_1]
+10.211.55.3
+
+[redis_sc_2]
+10.211.55.3
+
+[redis_sc_3]
+10.211.55.3
+
+[redis_sc_4]
+10.211.55.3
+
+[redis_sc_5]
+10.211.55.3
+
+[redis_sc_6]
+10.211.55.3
+
 [mysql_standalone]
 10.211.55.3

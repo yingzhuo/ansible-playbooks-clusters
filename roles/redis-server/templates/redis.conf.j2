@@ -92,3 +92,15 @@ maxclients                  10240
 # 加载模块
 #loadmodule                  /path/to/my_module.so
 #loadmodule                  /path/to/other_module.so
+
+################################ REDIS CLUSTER  ###############################
+{% if cluster_type == 'scaling-cluster' %}
+# 开启集群模式
+cluster-enabled              yes
+
+# 集群配置文件
+cluster-config-file          {{ data_dir }}/{{ service_name }}.conf
+
+# 集群通信过期时间 (毫秒)
+cluster-node-timeout         15000
+{% endif %}
