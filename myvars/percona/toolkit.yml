@@ -1,7 +1,7 @@
 toolkit:
   install_dir: "/usr/local/percona-toolkit"
   download_url: "https://downloads.percona.com/downloads/percona-toolkit/3.3.1/binary/tarball/percona-toolkit-3.3.1_x86_64.tar.gz"
+  host: "127.0.0.1"
+  port: 3306
   username: "root"
   password: "root"
-  port: 3306
-  host: "127.0.0.1"

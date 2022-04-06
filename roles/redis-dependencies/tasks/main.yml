@@ -22,3 +22,14 @@
     create_home: no
     shell: /usr/sbin/nologin
     state: present
+
+- name: setup sysctl parameters
+  notify:
+    - call 'sudo sysctl -p'
+  blockinfile:
+    path: /etc/sysctl.conf
+    marker: "# {mark} 由Ansible添加"
+    marker_begin: "begin"
+    marker_end: "end"
+    block: |
+      vm.overcommit_memory = 1

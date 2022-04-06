@@ -1,17 +1,44 @@
 ################################## NETWORK #####################################
+
+# 绑定网卡
 bind                        *
+
+# 监听端口
 port                        {{ listen_port }}
+
+# 保护模式时只允许本机访问
+protected-mode              no
+
+# 空闲连接超时时间(秒)
+timeout                     0
+
+# TCP长链接时间
 tcp-keepalive               300
 
 ################################# GENERAL #####################################
+
+# 后台模式
 daemonize                   no
+
+# 日志级别 ()
 loglevel                    notice
+
+# 日志文件
 logfile                     {{ log_dir }}/{{ log_file }}
+
+# PID文件
 pidfile                     {{ pid_dir }}/{{ pid_file }}
+
+# 是否输出日志到syslog
 syslog-enabled              no
+
+# 数据目录
 dir                         {{ data_dir }}
+
+# 数据库数量
 databases                   16
 
+# 在日志中是否输出ASCII-Logo
 always-show-logo            yes
 
 ############################## APPEND ONLY MODE ###############################
@@ -19,5 +46,16 @@ appendonly                  yes
 
 ################################## SECURITY ###################################
 {% if redis_password != '' %}
+# 密码
 requirepass                 {{ redis_password }}
 {% endif %}
+
+################################### CLIENTS ####################################
+# 同时最大连接数
+maxclients                  10240
+
+################################## MODULES #####################################
+
+# 加载模块
+#loadmodule                  /path/to/my_module.so
+#loadmodule                  /path/to/other_module.so
