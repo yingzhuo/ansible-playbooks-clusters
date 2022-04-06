@@ -32,7 +32,7 @@ pidfile                     {{ pid_dir }}/{{ pid_file }}
 # 是否输出日志到syslog
 syslog-enabled              no
 
-# 数据目录
+# 持久化目录
 dir                         {{ data_dir }}
 
 # 数据库数量
@@ -41,8 +41,41 @@ databases                   16
 # 在日志中是否输出ASCII-Logo
 always-show-logo            yes
 
+################################ SNAPSHOTTING  ################################
+
+# rdb文件保存策略
+save                        3600 1
+save                        300 100
+save                        60 10000
+
+# rdb文件名
+dbfilename                  dump.rdb
+
+# 是否压缩string类型数据
+rdbcompression              yes
+
+# 当无法写入硬盘时关闭所有的写操作
+stop-writes-on-bgsave-error yes
+
+# CRC32校检
+rdbchecksum                 yes
+
+################################ LUA SCRIPTING  ###############################
+# Lua脚本运行的最大时间 (毫秒).
+lua-time-limit              5000
+
 ############################## APPEND ONLY MODE ###############################
-appendonly                  yes
+# 是否启用appendonly
+appendonly                  no
+
+# appendonly文件名
+appendfilename              "appendonly.aof"
+
+# appendonly文件同步频率
+#  always: 每个指令同步
+#  everysec: 每秒同步
+#  no: 操作系统决定
+appendfsync                 everysec
 
 ################################## SECURITY ###################################
 {% if redis_password != '' %}
