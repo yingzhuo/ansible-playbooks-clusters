@@ -7,11 +7,10 @@
 ## 安装
 
 ```bash
+# 安装完成后root账号为空密码
 ansible-playbook playbook.mysql-node.yml -e @./myvars/mysql/standalone.yml \
   -e "HOSTS=mysql_standalone"
 ```
-
-**注意: ** 安装完成后`root`账号为空密码。
 
 ## 初始化用户名密码
 

@@ -11,7 +11,7 @@ ansible-playbook playbook.redis-node.yml -e @./myvars/redis/scaling-cluster-5.ym
 ansible-playbook playbook.redis-node.yml -e @./myvars/redis/scaling-cluster-6.yml -e "HOSTS=redis_sc_6"
 ```
 
-#### 组件集群
+#### 组建集群
 
 ```bash
 redis-cli \

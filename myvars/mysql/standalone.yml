@@ -26,3 +26,6 @@ general_log: "general.log"
 client:
   username: "root"
   password: "root"
+
+# 集群模式
+cluster_type: "standalone"
