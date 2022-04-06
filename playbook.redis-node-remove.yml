@@ -1,5 +1,5 @@
-- name: remove mysql node
+- name: remove redis node
   hosts: "{{ HOSTS }}"
   gather_facts: no
   roles:
-    - mysql-server-remove
+    - redis-server-remove
