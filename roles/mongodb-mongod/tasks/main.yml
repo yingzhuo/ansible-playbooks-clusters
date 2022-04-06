@@ -13,6 +13,7 @@
     state: directory
     owner: mongod
     group: mongod
+  when: cluster_type == 'replica-set'
 
 - name: copy key files
   copy:
@@ -21,6 +22,7 @@
     owner: mongod
     group: mongod
     mode: "0400"
+  when: cluster_type == 'replica-set'
 
 - name: create directores for log files
   file:

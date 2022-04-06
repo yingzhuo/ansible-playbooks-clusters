@@ -34,4 +34,4 @@ pid_file: "mongod.pid"
 # 是否要求MongoDB开启认证
 auth: "enabled"
 
-clusterType: "standalone"
+cluster_type: "standalone"

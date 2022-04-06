@@ -34,4 +34,5 @@ pid_file: "mongod-rs-2.pid"
 # 是否要求MongoDB开启认证
 auth: "enabled"
 
-clusterType: "replica-set"
+# 集群模式
+cluster_type: "replica-set"

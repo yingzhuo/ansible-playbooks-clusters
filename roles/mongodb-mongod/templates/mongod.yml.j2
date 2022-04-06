@@ -47,7 +47,7 @@ security:
   # 认证
   authorization: {{ auth }}
 
-{% if clusterType != 'standalone' and auth == 'enabled' %}
+{% if cluster_type != 'standalone' and auth == 'enabled' %}
   # key文件
   keyFile: {{ install_dir }}/keys/mongodb.key
 {% endif %}
@@ -60,7 +60,7 @@ processManagement:
   # pid文件
   pidFilePath: {{ pid_dir }}/{{ pid_file }}
 
-{% if clusterType != 'standalone' %}
+{% if cluster_type != 'standalone' %}
 replication:
 
   # 副本级名称
