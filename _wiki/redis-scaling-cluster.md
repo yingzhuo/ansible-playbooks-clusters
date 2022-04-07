@@ -1,5 +1,9 @@
 # 搭建/配置Redis集群
 
+#### 参考
+
+* [官方文档](https://redis.io/docs/manual/scaling/)
+
 #### 安装
 
 ```bash
