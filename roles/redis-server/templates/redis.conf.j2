@@ -1,106 +1,109 @@
 ################################## NETWORK #####################################
 
 # 绑定网卡
-bind                        *
+bind                            *
 
 # 监听端口
-port                        {{ listen_port }}
+port                            {{ listen_port }}
 
 # 保护模式时只允许本机访问
-protected-mode              no
+protected-mode                  no
 
 # 空闲连接超时时间(秒)
-timeout                     0
+timeout                         0
 
 # TCP长链接时间
-tcp-keepalive               300
+tcp-keepalive                   300
 
 ################################# GENERAL #####################################
 
 # 后台模式
-daemonize                   no
+daemonize                       no
 
 # 日志级别 ()
-loglevel                    notice
+loglevel                        notice
 
 # 日志文件
-logfile                     {{ log_dir }}/{{ log_file }}
+logfile                         {{ log_dir }}/{{ log_file }}
 
 # PID文件
-pidfile                     {{ pid_dir }}/{{ pid_file }}
+pidfile                         {{ pid_dir }}/{{ pid_file }}
 
 # 是否输出日志到syslog
-syslog-enabled              no
+syslog-enabled                  no
 
 # 持久化目录
-dir                         {{ data_dir }}
+dir                             {{ data_dir }}
 
 # 数据库数量
-databases                   16
+databases                       16
 
 # 在日志中是否输出ASCII-Logo
-always-show-logo            yes
+always-show-logo                yes
 
 ################################ SNAPSHOTTING  ################################
 
 # rdb文件保存策略
-save                        3600 1
-save                        300 100
-save                        60 10000
+save                            3600 1
+save                            300 100
+save                            60 10000
 
 # rdb文件名
-dbfilename                  dump.rdb
+dbfilename                      dump.rdb
 
 # 是否压缩string类型数据
-rdbcompression              yes
+rdbcompression                  yes
 
 # 当无法写入硬盘时关闭所有的写操作
-stop-writes-on-bgsave-error yes
+stop-writes-on-bgsave-error     yes
 
 # CRC32校检
-rdbchecksum                 yes
+rdbchecksum                     yes
 
 ################################ LUA SCRIPTING  ###############################
 # Lua脚本运行的最大时间 (毫秒).
-lua-time-limit              5000
+lua-time-limit                  5000
 
 ############################## APPEND ONLY MODE ###############################
 # 是否启用appendonly
-appendonly                  no
+appendonly                      no
 
 # appendonly文件名
-appendfilename              "appendonly.aof"
+appendfilename                  "appendonly.aof"
 
 # appendonly文件同步频率
 #  always: 每个指令同步
 #  everysec: 每秒同步
 #  no: 操作系统决定
-appendfsync                 everysec
+appendfsync                     everysec
 
 ################################## SECURITY ###################################
 {% if redis_password != '' %}
 # 密码
-requirepass                 {{ redis_password }}
+requirepass                     {{ redis_password }}
 {% endif %}
 
 ################################### CLIENTS ####################################
 # 同时最大连接数
-maxclients                  10240
+maxclients                      1000
 
 ################################## MODULES #####################################
 
 # 加载模块
-#loadmodule                  /path/to/my_module.so
-#loadmodule                  /path/to/other_module.so
+#loadmodule                     /path/to/my_module.so
+#loadmodule                     /path/to/other_module.so
 
 ################################ REDIS CLUSTER  ###############################
 {% if cluster_type == 'scaling-cluster' %}
 # 开启集群模式
-cluster-enabled              yes
+cluster-enabled                 yes
 
 # 集群配置文件
-cluster-config-file          {{ data_dir }}/{{ service_name }}.conf
+cluster-config-file             {{ data_dir }}/{{ service_name }}.conf
 
 # 集群通信过期时间 (毫秒)
-cluster-node-timeout         15000
+cluster-node-timeout            15000
+
+# 集群有一部分插槽失败时则整个集群全部不可用
+cluster-require-full-coverage   yes
 {% endif %}
