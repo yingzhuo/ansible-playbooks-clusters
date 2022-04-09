@@ -1,0 +1,19 @@
+- name: restart zabbix-server
+  service:
+    name: zabbix-server
+    state: restarted
+
+- name: restart zabbix-java-gateway
+  service:
+    name: zabbix-java-gateway
+    state: restarted
+
+- name: restart nginx
+  service:
+    name: nginx
+    state: restarted
+
+- name: restart php
+  service:
+    name: php-fpm
+    state: restarted

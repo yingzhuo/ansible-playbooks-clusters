@@ -1,0 +1,20 @@
+- name: install php php-fpm and so on
+  yum:
+    name:
+      - php
+      - php-fpm
+      - php-mysql
+      - php-pecl-redis
+    state: present
+
+- name: set timezone for php
+  lineinfile:
+    path: /etc/php.ini
+    regexp: "^;date.timezone =.*"
+    line: "date.timezone = Asia/Shanghai"
+
+- name: start php-fpm service
+  service:
+    name: php-fpm
+    state: started
+    enabled: yes

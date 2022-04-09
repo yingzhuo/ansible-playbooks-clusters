@@ -35,3 +35,7 @@
 
 [mysql_standalone]
 10.211.55.3
+
+[zabbix_server]
+10.211.55.3
+

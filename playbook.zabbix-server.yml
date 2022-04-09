@@ -1,0 +1,5 @@
+- name: install/setup zabbix server
+  hosts: "{{ HOSTS }}"
+  gather_facts: no
+  roles:
+    - zabbix-server

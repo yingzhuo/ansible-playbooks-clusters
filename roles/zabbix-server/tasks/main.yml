@@ -1,0 +1,85 @@
+- name: install zabbix-server and more
+  yum:
+    name:
+      - zabbix-server-mysql
+      - zabbix-get
+      - zabbix-web-mysql
+    state: present
+
+- name: install zabbix-java-gateway
+  yum:
+    name: zabbix-java-gateway
+    state: present
+
+- name: copy zabbix java gateway config file
+  template:
+    src: server/zabbix_java_gateway.conf.j2
+    dest: /etc/zabbix/zabbix_java_gateway.conf
+    owner: root
+    group: root
+    backup: yes
+  notify: restart zabbix-java-gateway
+
+- name: delete old nginx config file
+  file:
+    path: /etc/nginx/conf.d/zabbix.conf
+    state: absent
+
+- name: copy zabbix server config file
+  template:
+    src: server/zabbix_server.conf.j2
+    dest: /etc/zabbix/zabbix_server.conf
+    owner: root
+    group: root
+    backup: yes
+  notify: restart zabbix-server
+
+- name: copy nginx config file
+  template:
+    src: nginx/zabbix.conf.j2
+    dest: /etc/nginx/conf.d/zabbix.conf
+    owner: root
+    group: root
+  notify: restart nginx
+
+- name: copy php config file
+  template:
+    src: php/zabbix.conf.j2
+    dest: /etc/php-fpm.d/zabbix.conf
+    owner: root
+    group: root
+  notify: restart php
+
+- name: copy alert scripts
+  template:
+    src: "alertscripts/{{ item }}.j2"
+    dest: "/usr/lib/zabbix/alertscripts/{{ item }}"
+    owner: root
+    group: root
+    mode: '0755'
+  with_items:
+    - ScriptEmail.sh
+
+- name: start zabbix-server
+  service:
+    name: zabbix-server
+    state: started
+    enabled: yes
+
+- name: start zabbix-java-gateway
+  service:
+    name: zabbix-java-gateway
+    state: started
+    enabled: yes
+
+- name: start php service
+  service:
+    name: php-fpm
+    state: started
+    enabled: yes
+
+- name: start nginx service
+  service:
+    name: nginx
+    state: started
+    enabled: yes

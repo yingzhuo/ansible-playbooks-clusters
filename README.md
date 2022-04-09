@@ -16,3 +16,7 @@
 
 * [standalone](./_wiki/redis-standalone.md)
 * [scaling-cluster](./_wiki/redis-scaling-cluster.md)
+
+#### Zabbix
+
+* [server](./_wiki/zabbix-server.md)

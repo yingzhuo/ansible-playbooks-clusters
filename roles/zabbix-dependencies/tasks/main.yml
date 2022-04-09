@@ -1,0 +1,7 @@
+- name: config yum repo
+  template:
+    src: zabbix.repo.j2
+    dest: /etc/yum.repos.d/zabbix.repo
+    owner: root
+    group: root
+    mode: '0644'

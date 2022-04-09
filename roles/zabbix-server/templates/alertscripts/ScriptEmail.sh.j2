@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# 注意配置Zabbix "Media Types"时需要指定参数。 如下:
+# 第一个参数: {ALERT.SENDTO}
+# 第二个参数: {ALERT.SUBJECT}
+# 第三个参数: {ALERT.MESSAGE}
+
+to=$1
+subject=$2
+body=$3
+
+echo "$body" | mail -v -s "$subject" "$to"
