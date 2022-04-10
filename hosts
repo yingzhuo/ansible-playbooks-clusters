@@ -41,3 +41,6 @@
 
 [zabbix_agent]
 10.211.55.3
+
+[nginx_standalone]
+10.211.55.3
