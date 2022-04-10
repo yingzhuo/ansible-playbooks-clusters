@@ -1,54 +1,43 @@
-- name: install zabbix-server and more
+- name: install zabbix-server
   yum:
     name:
       - zabbix-server-mysql
       - zabbix-get
       - zabbix-web-mysql
+      - zabbix-java-gateway
     state: present
 
-- name: install zabbix-java-gateway
-  yum:
-    name: zabbix-java-gateway
-    state: present
-
-- name: copy zabbix java gateway config file
-  template:
-    src: server/zabbix_java_gateway.conf.j2
-    dest: /etc/zabbix/zabbix_java_gateway.conf
-    owner: root
-    group: root
-    backup: yes
-  notify: restart zabbix-java-gateway
-
-- name: delete old nginx config file
-  file:
-    path: /etc/nginx/conf.d/zabbix.conf
-    state: absent
-
-- name: copy zabbix server config file
+- name: copy zabbix server configuration file
   template:
     src: server/zabbix_server.conf.j2
     dest: /etc/zabbix/zabbix_server.conf
     owner: root
     group: root
-    backup: yes
-  notify: restart zabbix-server
+  notify: restart zabbix-server service
 
-- name: copy nginx config file
+- name: copy zabbix java gateway configuration file
+  template:
+    src: server/zabbix_java_gateway.conf.j2
+    dest: /etc/zabbix/zabbix_java_gateway.conf
+    owner: root
+    group: root
+  notify: restart zabbix-java-gateway service
+
+- name: copy nginx configuration file
   template:
     src: nginx/zabbix.conf.j2
     dest: /etc/nginx/conf.d/zabbix.conf
     owner: root
     group: root
-  notify: restart nginx
+  notify: restart nginx service
 
-- name: copy php config file
+- name: copy php-fpm configuration file
   template:
     src: php/zabbix.conf.j2
     dest: /etc/php-fpm.d/zabbix.conf
     owner: root
     group: root
-  notify: restart php
+  notify: restart php-fpm service
 
 - name: copy alert scripts
   template:
@@ -60,19 +49,19 @@
   with_items:
     - ScriptEmail.sh
 
-- name: start zabbix-server
+- name: start zabbix-server service
   service:
     name: zabbix-server
     state: started
     enabled: yes
 
-- name: start zabbix-java-gateway
+- name: start zabbix-java-gateway service
   service:
     name: zabbix-java-gateway
     state: started
     enabled: yes
 
-- name: start php service
+- name: start php-fpm service
   service:
     name: php-fpm
     state: started

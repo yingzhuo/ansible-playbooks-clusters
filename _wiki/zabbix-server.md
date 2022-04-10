@@ -25,4 +25,4 @@ zcat /usr/share/doc/zabbix-server-mysql-4.4.10/create.sql.gz | mysql -uzabbix -p
 
 #### 初始化`zabbix`
 
-使用Web浏览器即可。
+使用Web浏览器即可
