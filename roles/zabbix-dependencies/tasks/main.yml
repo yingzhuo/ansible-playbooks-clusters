@@ -5,3 +5,17 @@
     owner: root
     group: root
     mode: '0644'
+
+- name: add group zabbix
+  group:
+    name: zabbix
+
+- name: add user zabbix
+  user:
+    name: zabbix
+    groups:
+      - zabbix
+      - wheel
+    system: yes
+    create_home: no
+    append: no

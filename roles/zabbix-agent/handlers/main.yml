@@ -1,0 +1,8 @@
+- name: restart zabbix-agent service
+  service:
+    name: zabbix-agent
+    state: restarted
+
+- name: call 'sudo systemctl daemon-reaload'
+  shell:
+    cmd: "sudo systemctl daemon-reaload"

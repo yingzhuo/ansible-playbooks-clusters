@@ -20,3 +20,4 @@
 #### Zabbix
 
 * [server](./_wiki/zabbix-server.md)
+* [agent](./_wiki/zabbix-agent.md)

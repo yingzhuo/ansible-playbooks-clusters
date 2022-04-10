@@ -39,3 +39,5 @@
 [zabbix_server]
 10.211.55.3
 
+[zabbix_agent]
+10.211.55.3

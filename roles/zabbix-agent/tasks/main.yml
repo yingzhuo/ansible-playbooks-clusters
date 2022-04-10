@@ -1,0 +1,46 @@
+- name: install zabbix-agent and more
+  yum:
+    name:
+      - zabbix-agent
+      - zabbix-sender
+    state: present
+
+- name: copy config file for zabbix-agent
+  template:
+    src: zabbix_agentd.conf.j2
+    dest: /etc/zabbix/zabbix_agentd.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - restart zabbix-agent service
+
+- name: copy config file for zabbix-agent service
+  template:
+    src: zabbix_agented.service.j2
+    dest: /usr/lib/systemd/system/zabbix-agent.service
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - call 'sudo systemctl daemon-reaload'
+    - restart zabbix-agent service
+
+- name: copy custom key for zabbix-agent
+  copy:
+    src: "zabbix_agentd.d/{{ item }}"
+    dest: "/etc/zabbix/zabbix_agentd.d/{{ item }}"
+    backup: no
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - restart zabbix-agent service
+  with_items:
+    - yingzhuo.keys.misc.conf
+
+- name: start zabbix-agent
+  service:
+    name: zabbix-agent
+    state: started
+    enabled: yes
