@@ -31,11 +31,11 @@ LimitNOFILE=32768
 # https://www.rabbitmq.com/monitoring.html
 Restart=on-failure
 RestartSec=10
-WorkingDirectory={{ install_dir }}
 Environment="HOME={{ data_dir }}"
+Environment="RABBITMQ_HOME={{ install_dir }}"
 Environment="RABBITMQ_MNESIA_BASE={{ data_dir }}"
+Environment="RABBITMQ_CONFIG_FILE={{ config_dir }}/{{ service_name }}.conf"
 Environment="RABBITMQ_LOG_BASE={{ log_dir }}"
-Environment="RABBITMQ_NODE_PORT={{ listen_port }}"
 ExecStart={{ install_dir }}/sbin/rabbitmq-server
 ExecStop={{ install_dir }}/sbin/rabbitmqctl shutdown
 SuccessExitStatus=69

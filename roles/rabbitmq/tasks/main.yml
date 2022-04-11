@@ -39,12 +39,29 @@
     group: rabbitmq
     owner: rabbitmq
 
+- name: create config directory - {{ config_dir }}
+  file:
+    path: "{{ config_dir }}"
+    state: directory
+    group: root
+    owner: root
+
 - name: create log directory - {{ log_dir }}
   file:
     path: "{{ log_dir }}"
     state: directory
     group: rabbitmq
     owner: rabbitmq
+
+- name: copy main config file
+  template:
+    src: rabbitmq.conf.j2
+    dest: "{{ config_dir }}/{{ service_name }}.conf"
+    group: root
+    owner: root
+    mode: "0644"
+  notify:
+    - restart {{ service_name }}
 
 - name: copy configuration file for systemctl
   template:
