@@ -1,0 +1,5 @@
+- name: install/setup rabbitmq server
+  hosts: "{{ HOSTS }}"
+  gather_facts: no
+  roles:
+    - rabbitmq

@@ -4,7 +4,7 @@
 
 ```bash
 ansible-playbook playbook.percona-toolkit.yml -e @./myvars/percona/toolkit.yml \
-  -e "HOSTS=mysql_standalone" -v
+  -e "HOSTS=mysql_standalone"
 ```
 
 ## 附录

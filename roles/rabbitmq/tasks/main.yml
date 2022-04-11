@@ -1,0 +1,71 @@
+- name: create group 'rabbitmq'
+  group:
+    name: rabbitmq
+    state: present
+
+- name: crete user 'rabbitmq'
+  user:
+    name: rabbitmq
+    group: rabbitmq
+    create_home: no
+    shell: /usr/sbin/nologin
+    state: present
+
+- name: setup yum repo for erlang
+  copy:
+    src: rabbitmq.repo
+    dest: /etc/yum.repos.d/rabbitmq.repo
+    group: root
+    owner: root
+
+- name: install erlang language support and dependencies
+  yum:
+    name:
+      - erlang
+      - socat
+    state: present
+
+- name: create configuration directory - {{ config_dir }}
+  file:
+    path: "{{ config_dir }}"
+    state: directory
+    group: root
+    owner: root
+
+- name: create data directory - {{ data_dir }}
+  file:
+    path: "{{ data_dir }}"
+    state: directory
+    group: rabbitmq
+    owner: rabbitmq
+
+- name: create log directory - {{ log_dir }}
+  file:
+    path: "{{ log_dir }}"
+    state: directory
+    group: rabbitmq
+    owner: rabbitmq
+
+- name: copy configuration file for systemctl
+  template:
+    src: rabbitmq.service.j2
+    dest: "/lib/systemd/system/{{ service_name }}.service"
+    owner: root
+    group: root
+  notify:
+    - call 'sudo systemctl daemon-reload'
+    - restart {{ service_name }}
+
+- name: start {{ service_name }}
+  service:
+    name: "{{ service_name }}"
+    state: started
+    enabled: yes
+
+- name: set owner and group for install directory - '{{ install_dir }}'
+  file:
+    path: "{{ install_dir }}"
+    state: directory
+    owner: rabbitmq
+    group: rabbitmq
+    recurse: true
