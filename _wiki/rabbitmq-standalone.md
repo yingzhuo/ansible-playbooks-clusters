@@ -25,3 +25,15 @@ rabbitmqctl add_user root root
 rabbitmqctl set_user_tags root administrator
 rabbitmqctl set_permissions -p "/" root ".*" ".*" ".*"
 ```
+
+## 社区插件
+
+#### [rabbitmq-delayed-message-exchange](https://github.com/rabbitmq/rabbitmq-delayed-message-exchange)
+
+```bash
+cp rabbitmq_delayed_message_exchange-*.ez $RABBITMQ_HOME/plugins
+chown rabbitmq:rabbitmq $RABBITMQ_HOME/plugins/rabbitmq_delayed_message_exchange-*.ez
+rabbitmq-plugins enable rabbitmq_delayed_message_exchange
+
+sudo systemctl restart rabbitmq.service
+```
