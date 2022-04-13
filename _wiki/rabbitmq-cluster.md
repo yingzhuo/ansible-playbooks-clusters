@@ -47,9 +47,28 @@ rabbitmqctl set_permissions -p "/" root ".*" ".*" ".*" --node bunny@vm01
 
 ## 设置镜像交换机与镜像队列策略
 
-| virtual host | Name    | Regex Pattern | Apply To | Def                                                          |
+| Virtual Host | Name    | Regex Pattern | Apply To | Definition                                                   |
 | ------------ | ------- | ------------- | -------- | ------------------------------------------------------------ |
 | /            | mirror2 | ^mirror2.*$   | all      | ha-mode = exactly<br>ha-params = 2<br>ha-sync-mode = automatic |
 | /            | mirror3 | ^mirror3.*$   | all      | ha-mode = exactly<br/>ha-params = 3<br/>ha-sync-mode = automatic |
 
 如上面的例子，在名为"/"的vhost下，名称以"mirror2"和"mirror3"开始的队列或交换机会自动备份。
+
+## 其他插件
+
+#### shovel (官方)
+
+```bash
+# 需重启服务或集群
+rabbitmq-plugins enable rabbitmq_shovel
+rabbitmq-plugins enable rabbitmq_shovel_management
+```
+
+#### [rabbitmq-delayed-message-exchange (社区)](https://github.com/rabbitmq/rabbitmq-delayed-message-exchange)
+
+```bash
+# 需重启服务或集群
+cp rabbitmq_delayed_message_exchange-*.ez $RABBITMQ_HOME/plugins
+chown rabbitmq:rabbitmq $RABBITMQ_HOME/plugins/rabbitmq_delayed_message_exchange-*.ez
+rabbitmq-plugins enable rabbitmq_delayed_message_exchange
+```

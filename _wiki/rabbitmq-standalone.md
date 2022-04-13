@@ -26,16 +26,23 @@ rabbitmqctl set_user_tags root administrator
 rabbitmqctl set_permissions -p "/" root ".*" ".*" ".*"
 ```
 
-## 社区插件
+## 其他插件
 
-#### [rabbitmq-delayed-message-exchange](https://github.com/rabbitmq/rabbitmq-delayed-message-exchange)
+#### shovel (官方)
 
 ```bash
+# 需重启服务或集群
+rabbitmq-plugins enable rabbitmq_shovel
+rabbitmq-plugins enable rabbitmq_shovel_management
+```
+
+#### [rabbitmq-delayed-message-exchange (社区)](https://github.com/rabbitmq/rabbitmq-delayed-message-exchange)
+
+```bash
+# 需重启服务或集群
 cp rabbitmq_delayed_message_exchange-*.ez $RABBITMQ_HOME/plugins
 chown rabbitmq:rabbitmq $RABBITMQ_HOME/plugins/rabbitmq_delayed_message_exchange-*.ez
 rabbitmq-plugins enable rabbitmq_delayed_message_exchange
-
-sudo systemctl restart rabbitmq.service
 ```
 
 ## 其他
