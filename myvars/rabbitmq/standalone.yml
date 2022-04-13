@@ -17,7 +17,7 @@ log_dir: "/var/log/rabbitmq"
 listen_port: 5672
 
 # 节点名称
-node_name: "bunny@myhost"
+node_name: "bunny"
 
 # 集群模式
 cluster_type: "standalone"

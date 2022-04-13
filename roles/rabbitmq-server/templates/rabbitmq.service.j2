@@ -32,6 +32,7 @@ LimitNOFILE=32768
 Restart=on-failure
 RestartSec=10
 Environment="HOME={{ data_dir }}"
+Environment="RABBITMQ_NODENAME={{ node_name }}"
 Environment="RABBITMQ_HOME={{ install_dir }}"
 Environment="RABBITMQ_MNESIA_BASE={{ data_dir }}"
 Environment="RABBITMQ_CONFIG_FILE={{ config_dir }}/{{ service_name }}.conf"
