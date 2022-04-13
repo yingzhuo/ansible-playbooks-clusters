@@ -20,6 +20,7 @@
 #### RabbitMQ
 
 * [standalone](./_wiki/rabbitmq-standalone.md)
+* [cluster](./_wiki/rabbitmq-cluster.md)
 
 #### Nginx
 

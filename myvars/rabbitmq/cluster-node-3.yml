@@ -1,0 +1,25 @@
+# 服务名称
+service_name: "rabbitmq-c3"
+
+# 安装目录
+install_dir: "/usr/local/rabbitmq"
+
+# 数据目录
+data_dir: "/data/rabbitmq/c3"
+
+# 配置目录
+config_dir: "/etc/rabbitmq/c3"
+
+# 日志目录
+log_dir: "/var/log/rabbitmq/c3"
+
+# 监听端口
+listen_port: 5674
+listen_management_port: 15674
+listen_dist_port: 25674
+
+# 节点名称
+node_name: "bunny3"
+
+# 集群模式
+cluster_type: "cluster"

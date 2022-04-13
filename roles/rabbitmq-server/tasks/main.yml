@@ -29,29 +29,37 @@
   file:
     path: "{{ config_dir }}"
     state: directory
-    group: root
     owner: root
+    group: root
 
 - name: create data directory - {{ data_dir }}
   file:
     path: "{{ data_dir }}"
     state: directory
-    group: rabbitmq
     owner: rabbitmq
+    group: rabbitmq
 
 - name: create config directory - {{ config_dir }}
   file:
     path: "{{ config_dir }}"
     state: directory
-    group: root
     owner: root
+    group: root
 
 - name: create log directory - {{ log_dir }}
   file:
     path: "{{ log_dir }}"
     state: directory
-    group: rabbitmq
     owner: rabbitmq
+    group: rabbitmq
+
+- name: copy erlang.cookie file to data directory
+  copy:
+    src: erlang.cookie
+    dest: "{{ data_dir }}/.erlang.cookie"
+    owner: rabbitmq
+    group: rabbitmq
+    mode: "0400"
 
 - name: copy main config file
   template:

@@ -7,7 +7,7 @@
 #### 安装
 
 ```bash
-ansible-playbook playbook.redis-node.yml -e @./myvars/redis/scaling-cluster-1.yml -e "HOSTS=redis_sc_1"
+ansible-playbook playbook.redis-node.yml -e @./myvars/redis/scaling-cluster-node-1.yml -e "HOSTS=redis_sc_1"
 ansible-playbook playbook.redis-node.yml -e @./myvars/redis/scaling-cluster-2.yml -e "HOSTS=redis_sc_2"
 ansible-playbook playbook.redis-node.yml -e @./myvars/redis/scaling-cluster-3.yml -e "HOSTS=redis_sc_3"
 ansible-playbook playbook.redis-node.yml -e @./myvars/redis/scaling-cluster-4.yml -e "HOSTS=redis_sc_4"
@@ -33,7 +33,7 @@ redis-cli \
 #### 删除集群(可选)
 
 ```bash
-ansible-playbook playbook.redis-node-remove.yml -e @./myvars/redis/scaling-cluster-1.yml -e "HOSTS=redis_sc_1"
+ansible-playbook playbook.redis-node-remove.yml -e @./myvars/redis/scaling-cluster-node-1.yml -e "HOSTS=redis_sc_1"
 ansible-playbook playbook.redis-node-remove.yml -e @./myvars/redis/scaling-cluster-2.yml -e "HOSTS=redis_sc_2"
 ansible-playbook playbook.redis-node-remove.yml -e @./myvars/redis/scaling-cluster-3.yml -e "HOSTS=redis_sc_3"
 ansible-playbook playbook.redis-node-remove.yml -e @./myvars/redis/scaling-cluster-4.yml -e "HOSTS=redis_sc_4"

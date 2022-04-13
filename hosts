@@ -47,3 +47,12 @@
 
 [rabbitmq_standalone]
 10.211.55.3
+
+[rabbitmq_cluster_1]
+10.211.55.3
+
+[rabbitmq_cluster_2]
+10.211.55.3
+
+[rabbitmq_cluster_3]
+10.211.55.3
