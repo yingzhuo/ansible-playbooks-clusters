@@ -63,6 +63,22 @@
   notify:
     - restart {{ service_name }}
 
+- name: remove some useless files of install directory
+  shell:
+    cmd: "{{ item }}"
+  with_items:
+    - "rm -rf {{ install_dir }}/LICENSE*"
+    - "rm -rf {{ install_dir }}/INSTALL"
+  changed_when: no
+
+- name: set owner and group for install directory - '{{ install_dir }}'
+  file:
+    path: "{{ install_dir }}"
+    state: directory
+    owner: rabbitmq
+    group: rabbitmq
+    recurse: true
+
 - name: copy configuration file for systemctl
   template:
     src: rabbitmq.service.j2
@@ -78,11 +94,3 @@
     name: "{{ service_name }}"
     state: started
     enabled: yes
-
-- name: set owner and group for install directory - '{{ install_dir }}'
-  file:
-    path: "{{ install_dir }}"
-    state: directory
-    owner: rabbitmq
-    group: rabbitmq
-    recurse: true

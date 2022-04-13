@@ -37,3 +37,12 @@ rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 
 sudo systemctl restart rabbitmq.service
 ```
+
+## 其他
+
+```bash
+ansible-playbook playbook.rabbitmq-server-remove.yml -e @./myvars/rabbitmq/standalone.yml \
+  -e "HOSTS=mongodb_standalone"
+```
+
+**注意：** 将删除所有的数据和配置文件但不会卸载依赖的软件和系统配置。

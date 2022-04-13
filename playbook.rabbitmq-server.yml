@@ -2,4 +2,4 @@
   hosts: "{{ HOSTS }}"
   gather_facts: no
   roles:
-    - rabbitmq
+    - rabbitmq-server
