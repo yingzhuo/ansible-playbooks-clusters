@@ -44,3 +44,12 @@ rabbitmqctl add_user root root --node bunny1@vm01
 rabbitmqctl set_user_tags root administrator --node bunny1@vm01
 rabbitmqctl set_permissions -p "/" root ".*" ".*" ".*" --node bunny@vm01
 ```
+
+## 设置镜像交换机与镜像队列策略
+
+| virtual host | Name    | Regex Pattern | Apply To | Def                                                          |
+| ------------ | ------- | ------------- | -------- | ------------------------------------------------------------ |
+| /            | mirror2 | ^mirror2.*$   | all      | ha-mode = exactly<br>ha-params = 2<br>ha-sync-mode = automatic |
+| /            | mirror3 | ^mirror3.*$   | all      | ha-mode = exactly<br/>ha-params = 3<br/>ha-sync-mode = automatic |
+
+如上面的例子，在名为"/"的vhost下，名称以"mirror2"和"mirror3"开始的队列或交换机会自动备份。
