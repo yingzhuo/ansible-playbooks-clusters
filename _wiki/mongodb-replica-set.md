@@ -1,10 +1,10 @@
 # 搭建/配置MongoDB副本集集群
 
-#### 下载与解压
+## 下载与解压
 
 受网络限制，我们不打算采用使用`ansible`下载MongoDB的二进制包。请自行下载并解压到`/usr/local/mongodb`
 
-#### 安装
+## 安装
 
 ```bash
 # 安装第一个数据节点 (有可能当选主节点)
@@ -23,7 +23,7 @@ ansible-playbook playbook.mongodb-node.yml -e @./myvars/mongodb/replica-set-mong
   -e "auth=disabled"
 ```
 
-#### 初始化`replica set`
+## 初始化`replica set`
 
 ```bash
 mongosh --host 10.211.55.3 --port 27017
@@ -42,7 +42,7 @@ rs.initiate( {
 })
 ```
 
-#### 初始化`root`用户
+## 初始化`root`用户
 
 ```bash
 mongosh --host 127.0.0.1 --port 27017
@@ -60,7 +60,7 @@ db.createUser(
 )
 ```
 
-#### 重启`MongoDB`集群并开启认证
+## 重启`MongoDB`集群并开启认证
 
 ```bash
 ansible-playbook playbook.mongodb-node.yml -e @./myvars/mongodb/replica-set-mongod-1.yml \
@@ -76,7 +76,7 @@ ansible-playbook playbook.mongodb-node.yml -e @./myvars/mongodb/replica-set-mong
   -e "auth=enabled"
 ```
 
-#### 删除集群(可选)
+## 删除集群(可选)
 
 ```bash
 ansible-playbook playbook.mongodb-node-remove.yml -e @./myvars/mongodb/replica-set-mongod-1.yml \
@@ -91,7 +91,7 @@ ansible-playbook playbook.mongodb-node-remove.yml -e @./myvars/mongodb/replica-s
 
 **注意：** 将删除所有的数据和配置文件但不会卸载依赖的软件和系统配置。
 
-#### 其他
+## 其他
 
 ##### (1) keyfile生成方式:
 

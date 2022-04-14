@@ -1,0 +1,9 @@
+- name: call 'sudo systemctl daemon-reload'
+  shell:
+    cmd: "sudo systemctl daemon-reload"
+
+- name: restart {{ service_name }} service
+  service:
+    name: "{{ service_name }}"
+    state: restarted
+    enabled: yes

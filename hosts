@@ -56,3 +56,6 @@
 
 [rabbitmq_cluster_3]
 10.211.55.3
+
+[kafka_standalone]
+10.211.55.3

@@ -1,10 +1,10 @@
 # 搭建/配置Redis集群
 
-#### 参考
+## 参考
 
 * [官方文档](https://redis.io/docs/manual/scaling/)
 
-#### 安装
+## 安装
 
 ```bash
 ansible-playbook playbook.redis-node.yml -e @./myvars/redis/scaling-cluster-node-1.yml -e "HOSTS=redis_sc_1"
@@ -15,7 +15,7 @@ ansible-playbook playbook.redis-node.yml -e @./myvars/redis/scaling-cluster-5.ym
 ansible-playbook playbook.redis-node.yml -e @./myvars/redis/scaling-cluster-6.yml -e "HOSTS=redis_sc_6"
 ```
 
-#### 组建集群
+## 组建集群
 
 ```bash
 redis-cli \
@@ -30,7 +30,7 @@ redis-cli \
   10.211.55.3:6384
 ```
 
-#### 删除集群(可选)
+## 删除集群(可选)
 
 ```bash
 ansible-playbook playbook.redis-node-remove.yml -e @./myvars/redis/scaling-cluster-node-1.yml -e "HOSTS=redis_sc_1"

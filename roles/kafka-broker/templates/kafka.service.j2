@@ -1,0 +1,16 @@
+[Unit]
+Description=Kafka
+Documentation=https://kafka.apache.org/documentation/
+After=syslog.target
+
+[Service]
+Type=simple
+User=kafka
+Group=kafka
+EnvironmentFile={{ config_dir }}/env.sh
+ExecStart={{ install_dir }}/bin/kafka-server-start.sh {{ config_dir }}/kraft-server.properties
+KillSignal=15
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target

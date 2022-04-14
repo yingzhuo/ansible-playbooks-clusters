@@ -1,0 +1,5 @@
+- name: install/setup kafka broker
+  hosts: "{{ HOSTS }}"
+  gather_facts: no
+  roles:
+    - kafka-broker

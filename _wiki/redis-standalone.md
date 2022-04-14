@@ -1,12 +1,12 @@
 # 搭建/配置单节点Redis
 
-#### 安装
+## 安装
 
 ```bash
 ansible-playbook playbook.redis-node.yml -e @./myvars/redis/standalone.yml -e "HOSTS=redis_standalone"
 ```
 
-#### 删除节点(可选)
+## 删除节点(可选)
 
 ```bash
 ansible-playbook playbook.redis-node-remove.yml -e @./myvars/redis/standalone.yml -e "HOSTS=redis_standalone"

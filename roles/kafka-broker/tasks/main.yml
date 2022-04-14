@@ -1,0 +1,84 @@
+- name: create group 'kafka'
+  group:
+    name: kafka
+    state: present
+
+- name: create user 'kafka'
+  user:
+    name: kafka
+    group: kafka
+    system: yes
+    create_home: no
+    state: present
+
+- name: create data directory
+  file:
+    path: "{{ data_dir }}"
+    state: directory
+    owner: kafka
+    group: kafka
+
+- name: create configuration directory
+  file:
+    path: "{{ config_dir }}"
+    state: directory
+    owner: root
+    group: root
+
+- name: copy configuration files
+  template:
+    src: kraft-server.properties.j2
+    dest: "{{ config_dir }}/kraft-server.properties"
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: test if data directory empty
+  find:
+    paths:
+      - "{{ data_dir }}"
+  register: files_found
+
+- name: init data directory
+  shell:
+    cmd: "{{ install_dir }}/bin/kafka-storage.sh format -t {{ random_uuid }} -c {{ config_dir }}/kraft-server.properties"
+  environment:
+    JAVA_HOME: "{{ java_home }}"
+  when: files_found.matched == 0
+
+- name: reset data directory owner and group
+  file:
+    path: "{{ data_dir }}"
+    state: directory
+    owner: kafka
+    group: kafka
+    recurse: yes
+
+- name: copy service file env-file for systemctl
+  template:
+    src: kafka.service.env.j2
+    dest: "{{ config_dir }}/env.sh"
+    owner: root
+    group: root
+  notify:
+    - restart {{ service_name }} service
+
+- name: copy service file for systemctl
+  template:
+    src: kafka.service.j2
+    dest: "/lib/systemd/system/{{ service_name }}.service"
+    owner: root
+    group: root
+  notify:
+    - call 'sudo systemctl daemon-reload'
+    - restart {{ service_name }} service
+
+- name: call 'sudo systemctl daemon-reload'
+  shell:
+    cmd: "sudo systemctl daemon-reload"
+
+- name: start {{ service_name }} service
+  service:
+    name: "{{ service_name }}"
+    state: started
+    enabled: yes

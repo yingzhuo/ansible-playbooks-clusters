@@ -22,6 +22,10 @@
 * [standalone](./_wiki/rabbitmq-standalone.md)
 * [cluster](./_wiki/rabbitmq-cluster.md)
 
+#### Kafka
+
+* [standalone](./_wiki/kafka-standalone.md)
+
 #### Nginx
 
 * [standalone](./_wiki/nginx-standalone.md)
