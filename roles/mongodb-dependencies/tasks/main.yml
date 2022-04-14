@@ -19,16 +19,6 @@
       - xz-libs
     state: present
 
-- name: update /etc/security/limits.conf
-  blockinfile:
-    path: /etc/security/limits.conf
-    marker: "# {mark} 由Ansible添加"
-    marker_begin: "begin"
-    marker_end: "end"
-    block: |
-      mongod soft noproc 65535
-      mongod hard noproc 65535
-
 - name: disable transparent huge pages
   shell:
     cmd: "{{ item }}"
