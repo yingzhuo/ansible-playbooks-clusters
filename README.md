@@ -33,4 +33,5 @@
 
 #### Misc
 
-* [ulimit](./_wiki/ulimits.md)
+* [selinux](./_wiki/selinux.md)
+* [ulimits](./_wiki/ulimits.md)

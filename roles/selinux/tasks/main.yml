@@ -1,0 +1,9 @@
+- name: diable selinx temporarily
+  shell:
+    cmd: "sudo setenforce 0"
+  ignore_errors: yes
+  changed_when: no
+
+- name: disable selinux
+  selinux:
+    state: disabled
