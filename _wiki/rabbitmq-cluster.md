@@ -72,3 +72,13 @@ cp rabbitmq_delayed_message_exchange-*.ez $RABBITMQ_HOME/plugins
 chown rabbitmq:rabbitmq $RABBITMQ_HOME/plugins/rabbitmq_delayed_message_exchange-*.ez
 rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 ```
+
+## 其他
+
+```bash
+ansible-playbook playbook.rabbitmq-server-remove.yml -e @./myvars/rabbitmq/cluster-node-1.yml -e "HOSTS=rabbitmq_cluster_1"
+ansible-playbook playbook.rabbitmq-server-remove.yml -e @./myvars/rabbitmq/cluster-node-2.yml -e "HOSTS=rabbitmq_cluster_2"
+ansible-playbook playbook.rabbitmq-server-remove.yml -e @./myvars/rabbitmq/cluster-node-3.yml -e "HOSTS=rabbitmq_cluster_3"
+```
+
+**注意：** 将删除所有的数据和配置文件但不会卸载依赖的软件和系统配置。
