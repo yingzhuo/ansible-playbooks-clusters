@@ -32,6 +32,8 @@
     owner: root
     group: root
     mode: "0644"
+  notify:
+    - restart {{ service_name }} service
 
 - name: test if data directory empty
   find:
@@ -76,6 +78,7 @@
 - name: call 'sudo systemctl daemon-reload'
   shell:
     cmd: "sudo systemctl daemon-reload"
+  changed_when: no
 
 - name: start {{ service_name }} service
   service:

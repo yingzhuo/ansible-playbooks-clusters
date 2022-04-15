@@ -7,7 +7,7 @@ process.roles=broker,controller
 node.id=1
 
 # The connect string for the controller quorum
-controller.quorum.voters=1@localhost:{{ listen_controller_port  }}
+controller.quorum.voters=1@{{ ansible_ssh_host }}:{{ listen_controller_port  }}
 
 ############################# Socket Server Settings #############################
 
@@ -23,7 +23,7 @@ inter.broker.listener.name=PLAINTEXT
 # Hostname and port the broker will advertise to producers and consumers. If not set,
 # it uses the value for "listeners" if configured.  Otherwise, it will use the value
 # returned from java.net.InetAddress.getCanonicalHostName().
-advertised.listeners=PLAINTEXT://localhost:{{ listen_plaintext_port }}
+advertised.listeners=PLAINTEXT://{{ ansible_ssh_host }}:{{ listen_plaintext_port }}
 
 # Listener, host name, and port for the controller to advertise to the brokers. If
 # this server is a controller, this listener must be configured.
