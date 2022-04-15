@@ -1,0 +1,5 @@
+- name: setup zsh and oh-my-zsh
+  hosts: "{{ HOSTS }}"
+  gather_facts: no
+  roles:
+    - omz

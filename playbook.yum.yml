@@ -1,0 +1,5 @@
+- name: setup yum and yum-repo
+  hosts: "{{ HOSTS }}"
+  gather_facts: no
+  roles:
+    - yum

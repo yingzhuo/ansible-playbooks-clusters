@@ -1,0 +1,5 @@
+- name: setup firewall
+  hosts: "{{ HOSTS }}"
+  gather_facts: no
+  roles:
+    - firewall

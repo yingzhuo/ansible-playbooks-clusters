@@ -1,0 +1,40 @@
+- name: config yum
+  template:
+    src: yum.conf.j2
+    dest: /etc/yum.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: no
+
+- name: set base yum source
+  yum_repository:
+    name: bash
+    baseurl: "https://mirrors.aliyun.com/centos/7/os/x86_64/"
+    enabled: yes
+    gpgcheck: no
+    mode: '0644'
+    file: bash
+    description: base
+    state: present
+  notify: make cache
+
+- name: set epel yum source
+  yum_repository:
+    name: epel
+    baseurl: "https://mirrors.aliyun.com/epel/7/x86_64/"
+    enabled: yes
+    gpgcheck: no
+    mode: '0644'
+    file: epel
+    description: epel
+    state: present
+  notify: make cache
+
+- name: reset CentOS-Base.repo
+  template:
+    src: CentOS-Base.repo.j2
+    dest: /etc/yum.repos.d/CentOS-Base.repo
+    owner: root
+    group: root
+    mode: '0644'

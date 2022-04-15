@@ -1,0 +1,35 @@
+- name: install vim
+  yum:
+    name: vim
+    state: present
+
+- name: rsync .vim
+  synchronize:
+    mode: push
+    src: "{{ inventory_dir }}/_files/.vim"
+    dest: "{{ item }}"
+    archive: no
+    links: no
+    recursive: yes
+    rsync_opts:
+      - "--delete"
+      - "--delete-excluded"
+      - "--exclude=.DS_Store"
+      - "--exclude=.idea*"
+      - "--exclude=.git*"
+  loop:
+    - /root
+    - /etc/skel
+  changed_when: no
+
+- name: reset user and group for vim config files
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+    owner: root
+    group: root
+  loop:
+    - /root/.vim
+    - /etc/skel/.vim
+  changed_when: no

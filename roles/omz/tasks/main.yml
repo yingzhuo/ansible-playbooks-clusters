@@ -1,0 +1,60 @@
+- name: install zsh and more
+  yum:
+    name:
+      - zsh
+      - autojump-zsh
+    state: present
+
+- name: rsync .oh-my-zsh
+  synchronize:
+    mode: push
+    src: "{{ inventory_dir }}/_files/.oh-my-zsh"
+    dest: "{{ item }}"
+    archive: no
+    links: no
+    recursive: yes
+    rsync_opts:
+      - "--delete"
+      - "--delete-excluded"
+      - "--exclude=.DS_Store"
+      - "--exclude=.idea*"
+      - "--exclude=.git*"
+  loop:
+    - /root
+    - /etc/skel
+  changed_when: no
+
+- name: change default shell
+  user:
+    name: root
+    shell: /bin/zsh
+
+- name: reset user and group
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+    owner: root
+    group: root
+  loop:
+    - /root/.oh-my-zsh
+    - /etc/skel/.oh-my-zsh
+  changed_when: no
+
+- name: copy .zshrc file
+  template:
+    src: zshrc.j2
+    dest: "{{ item }}"
+    backup: no
+  loop:
+    - /root/.zshrc
+    - /etc/skel/.zshrc
+
+- name: touch .zlogout
+  file:
+    path: "{{ item }}"
+    state: touch
+  loop:
+    - /root/.zlogout
+    - /etc/skel/.zlogout
+  changed_when: no
