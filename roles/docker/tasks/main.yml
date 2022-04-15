@@ -1,0 +1,45 @@
+- name: install dependencies
+  yum:
+    name:
+      - yum-utils
+      - device-mapper-persistent-data
+      - lvm2
+    state: present
+
+- name: update yum repo
+  get_url:
+    url: "https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo"
+    dest: /etc/yum.repos.d/docker-ce.repo
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: install docker engine
+  yum:
+    name:
+      - docker-ce
+      - docker-compose
+    state: present
+
+- name: create config dir
+  file:
+    path: /etc/docker
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: copy config file
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: '0644'
+  notify: restart docker engine
+
+- name: startup docker engine
+  service:
+    name: docker
+    state: started
+    enabled: yes

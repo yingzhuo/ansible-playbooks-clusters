@@ -1,0 +1,5 @@
+- name: install and setup docker engine
+  hosts: "{{ HOSTS }}"
+  gather_facts: no
+  roles:
+    - docker
