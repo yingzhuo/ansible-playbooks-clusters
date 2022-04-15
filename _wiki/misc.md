@@ -12,6 +12,12 @@ ansible-playbook playbook.yum.yml -e "HOSTS=all"
 ansible-playbook playbook.omz.yml -e "HOSTS=all"
 ```
 
+## 重新配置ssh
+
+```bash
+ansible-playbook playbook.ssh.yml -e "HOSTS=all"
+```
+
 ## 安装和配置vim
 
 ```bash
@@ -35,4 +41,16 @@ ansible-playbook playbook.selinux.yml -e "HOSTS=all"
 ```bash
 # 重新登录即可生效
 ansible-playbook playbook.ulimits.yml -e "HOSTS=all"
+```
+
+## 设置系统swap配置
+
+```bash
+ansible-playbook playbook.swap.yml -e "HOSTS=all"
+```
+
+## 配置ntp-client
+
+```bash
+ansible-playbook playbook.ntp.yml -e "HOSTS=all"
 ```

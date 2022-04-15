@@ -1,0 +1,5 @@
+- name: setup swap
+  hosts: "{{ HOSTS }}"
+  gather_facts: no
+  roles:
+    - swap

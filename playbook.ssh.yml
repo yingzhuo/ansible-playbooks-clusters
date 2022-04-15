@@ -1,0 +1,5 @@
+- name: setup sshd configuration
+  hosts: "{{ HOSTS }}"
+  gather_facts: no
+  roles:
+    - ssh

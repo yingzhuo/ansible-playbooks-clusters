@@ -35,6 +35,10 @@
 * [server](./_wiki/zabbix-server.md)
 * [agent](./_wiki/zabbix-agent.md)
 
+#### Mail
+
+* [mail-client](./_wiki/mail.md)
+
 #### Misc
 
 * [misc](_wiki/misc.md)

@@ -1,0 +1,16 @@
+- name: copy sshd configure file
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: '0600'
+    backup: yes
+  notify:
+    - restart sshd service
+
+- name: start sshd service
+  service:
+    name: sshd
+    state: started
+    enabled: yes

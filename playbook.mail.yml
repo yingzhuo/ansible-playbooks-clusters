@@ -1,0 +1,5 @@
+- name: setup mailx
+  hosts: "{{ HOSTS }}"
+  gather_facts: no
+  roles:
+    - mail

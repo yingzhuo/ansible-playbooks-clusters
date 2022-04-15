@@ -1,0 +1,13 @@
+- name: install ntpdate
+  yum:
+    name: ntpdate
+    state: present
+
+- name: edit crontab
+  cron:
+    name: ntpdate synchronize datetime
+    job: "/usr/sbin/ntpdate {{ ntp_server }} > /dev/null"
+    state: present
+    user: root
+    minute: "0"
+    hour: "0,12"

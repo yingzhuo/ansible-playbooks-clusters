@@ -1,0 +1,24 @@
+- name: uninstall sendmail
+  yum:
+    name: sendmail
+    state: absent
+
+- name: install mainx and more
+  yum:
+    name: mailx
+    state: present
+
+- name: create soft link of mailx
+  file:
+    src: "/bin/mailx"
+    dest: "/bin/email"
+    state: link
+
+- name: copy mail.rc
+  template:
+    src: mail.rc.j2
+    dest: /etc/mail.rc
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
