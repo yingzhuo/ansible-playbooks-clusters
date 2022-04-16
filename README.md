@@ -2,6 +2,14 @@
 
 ## 维基
 
+#### Misc
+
+* [misc](_wiki/misc.md)
+
+#### Kernel
+
+* [kernel](_wiki/kernel.md)
+
 #### MySQL
 
 * [standalone](./_wiki/mysql-standalone.md)
@@ -42,7 +50,3 @@
 #### Mail
 
 * [mail-client](./_wiki/mail.md)
-
-#### Misc
-
-* [misc](_wiki/misc.md)
