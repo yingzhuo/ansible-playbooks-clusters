@@ -1,0 +1,5 @@
+- name: install cleanup script
+  hosts: "{{ HOSTS }}"
+  gather_facts: no
+  roles:
+    - cleanup-script

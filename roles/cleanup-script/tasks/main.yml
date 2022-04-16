@@ -1,0 +1,17 @@
+- name: copy script
+  template:
+    src: centos-cleanup.sh.j2
+    dest: "{{ shell_location }}"
+    owner: root
+    group: root
+    mode: '0755'
+    follow: yes
+
+- name: edit crontab
+  cron:
+    name: cleanup centos7
+    job: "{{ shell_location }} > /dev/null"
+    state: present
+    user: root
+    minute: "0"
+    hour: "11,23"
