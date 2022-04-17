@@ -1,0 +1,5 @@
+- name: remove kafka broker
+  hosts: "{{ HOSTS }}"
+  gather_facts: no
+  roles:
+    - kafka-broker-remove
