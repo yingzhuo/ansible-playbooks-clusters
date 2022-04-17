@@ -25,5 +25,8 @@ listen_controller_port: 9093
 # random_uuid
 random_uuid: "3cKknEyzTbapLQgoyCcZMA"
 
+# brokerId
+broker_id: 0
+
 # 集群类型
 cluster_type: "standalone"

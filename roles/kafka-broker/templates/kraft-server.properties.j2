@@ -4,10 +4,10 @@
 process.roles=broker,controller
 
 # The node id associated with this instance's roles
-node.id=1
+node.id={{ broker_id }}
 
 # The connect string for the controller quorum
-controller.quorum.voters=1@{{ ansible_ssh_host }}:{{ listen_controller_port  }}
+controller.quorum.voters={{ broker_id }}@{{ ansible_ssh_host }}:{{ listen_controller_port  }}
 
 ############################# Socket Server Settings #############################
 
