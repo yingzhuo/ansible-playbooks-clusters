@@ -60,9 +60,11 @@
 [kafka_standalone]
 10.211.55.3
 
+[zookeeper_standalone]
+10.211.55.3
+
 [mail_client]
 10.211.55.3
 
 [docker]
 10.211.55.3
-

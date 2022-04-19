@@ -1,0 +1,49 @@
+- name: create data dir
+  file:
+    path: "{{ data_dir }}"
+    state: directory
+    owner: root
+    group: root
+
+- name: create config dir
+  file:
+    path: "{{ config_dir }}"
+    state: directory
+    owner: root
+    group: root
+
+- name: create log dir
+  file:
+    path: "{{ log_dir }}"
+    state: directory
+    owner: root
+    group: root
+
+- name: copy configuration file
+  template:
+    src: zoo.cfg.j2
+    dest: "{{ config_dir }}/zoo.cfg"
+    owner: root
+    group: root
+  notify:
+    - call 'sudo systemctl daemon-reload'
+
+- name: copy systemctl config file
+  template:
+    src: zookeeper.service.j2
+    dest: "/lib/systemd/system/{{ service_name }}.service"
+    owner: root
+    group: root
+  notify:
+    - call 'sudo systemctl daemon-reload'
+    - restart {{ service_name }} service
+
+- name: call 'sudo systemctl daemon-reload'
+  shell:
+    cmd: "sudo systemctl daemon-reload"
+
+- name: start {{ service_name }} service
+  service:
+    name: "{{ service_name }}"
+    state: started
+    enabled: yes

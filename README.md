@@ -30,6 +30,10 @@
 * [standalone](./_wiki/rabbitmq-standalone.md)
 * [cluster](./_wiki/rabbitmq-cluster.md)
 
+#### Zookeeper
+
+* [standalone](./_wiki/zookeeper-standalone.md)
+
 #### Kafka
 
 * [standalone](./_wiki/kafka-standalone.md)

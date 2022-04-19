@@ -1,0 +1,5 @@
+- name: remove zookeeper broker
+  hosts: "{{ HOSTS }}"
+  gather_facts: no
+  roles:
+    - zookeeper-broker-remove

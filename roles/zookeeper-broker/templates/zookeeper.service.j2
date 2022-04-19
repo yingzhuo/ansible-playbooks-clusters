@@ -1,0 +1,18 @@
+[Unit]
+Description=Zookeeper
+Documentation=https://zookeeper.apache.org/doc/r3.8.0/index.html
+After=syslog.target
+
+[Service]
+Type=forking
+User=root
+Group=root
+Environment="JAVA_HOME={{ java_home }}"
+Environment="JMXDISABLE=true"
+Environment="ZOO_LOG_DIR={{ log_dir }}"
+Environment="ZOOCFGDIR={{ config_dir }}"
+ExecStart={{ install_dir }}/bin/zkServer.sh start
+ExecStop={{ install_dir }}/bin/zkServer.sh stop
+
+[Install]
+WantedBy=multi-user.target

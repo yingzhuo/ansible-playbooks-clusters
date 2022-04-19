@@ -1,0 +1,23 @@
+# java home
+java_home: "/usr/local/java-home"
+
+# 服务名称
+service_name: "zookeeper"
+
+# 安装目录
+install_dir: "/usr/local/zookeeper"
+
+# 配置文件目录
+config_dir: "/etc/zookeeper"
+
+# 数据目录
+data_dir: "/data/zookeeper"
+
+# 日志目录
+log_dir: "/var/log/zookeeper"
+
+# 监听端口
+listen_port: 2181
+
+# 集群类别
+cluster_type: "standalone"
