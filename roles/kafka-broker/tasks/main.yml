@@ -1,22 +1,16 @@
-- name: create group 'kafka'
-  group:
-    name: kafka
-    state: present
-
-- name: create user 'kafka'
-  user:
-    name: kafka
-    group: kafka
-    system: yes
-    create_home: no
-    state: present
-
 - name: create data directory
   file:
     path: "{{ data_dir }}"
     state: directory
-    owner: kafka
-    group: kafka
+    owner: root
+    group: root
+
+- name: create log directory
+  file:
+    path: "{{ log_dir }}"
+    state: directory
+    owner: root
+    group: root
 
 - name: create configuration directory
   file:
@@ -25,41 +19,38 @@
     owner: root
     group: root
 
-- name: copy configuration files
+- name: copy main configuration file
   template:
-    src: kraft-server.properties.j2
-    dest: "{{ config_dir }}/kraft-server.properties"
+    src: server.properties.j2
+    dest: "{{ config_dir }}/server.properties"
     owner: root
     group: root
     mode: "0644"
   notify:
     - restart {{ service_name }} service
 
-- name: test if data directory empty
-  find:
-    paths:
-      - "{{ data_dir }}"
-  register: files_found
-
-- name: init data directory
-  shell:
-    cmd: "{{ install_dir }}/bin/kafka-storage.sh format -t {{ random_uuid }} -c {{ config_dir }}/kraft-server.properties"
-  environment:
-    JAVA_HOME: "{{ java_home }}"
-  when: files_found.matched == 0
+- name: copy log4j configuration file
+  template:
+    src: log4j.properties.j2
+    dest: "{{ config_dir }}/log4j.properties"
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - restart {{ service_name }} service
 
 - name: reset data directory owner and group
   file:
     path: "{{ data_dir }}"
     state: directory
-    owner: kafka
-    group: kafka
+    owner: root
+    group: root
     recurse: yes
 
 - name: copy service file env-file for systemctl
   template:
     src: kafka.service.env.j2
-    dest: "{{ config_dir }}/env.sh"
+    dest: "{{ config_dir }}/systemctl-env.sh"
     owner: root
     group: root
   notify:

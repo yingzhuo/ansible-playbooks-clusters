@@ -5,10 +5,10 @@ After=syslog.target
 
 [Service]
 Type=simple
-User=kafka
-Group=kafka
-EnvironmentFile={{ config_dir }}/env.sh
-ExecStart={{ install_dir }}/bin/kafka-server-start.sh {{ config_dir }}/kraft-server.properties
+User=root
+Group=root
+EnvironmentFile={{ config_dir }}/systemctl-env.sh
+ExecStart={{ install_dir }}/bin/kafka-server-start.sh {{ config_dir }}/server.properties
 KillSignal=15
 SuccessExitStatus=143
 

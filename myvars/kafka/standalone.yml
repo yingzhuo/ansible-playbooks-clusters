@@ -10,20 +10,20 @@ kafka_heap_opts: "-Xmx1G"
 # 安装目录
 install_dir: /usr/local/kafka
 
-# 日志目录
+# 数据目录
 data_dir: /data/kafka
+
+# 日志目录
+log_dir: /var/log/kafka
 
 # 配置目录
 config_dir: /etc/kafka
 
-# 主服务端口
-listen_plaintext_port: 9092
+# 监听端口
+listen_port: 9092
 
-# 控制器端口
-listen_controller_port: 9093
-
-# random_uuid
-random_uuid: "3cKknEyzTbapLQgoyCcZMA"
+# zookeeper连接
+zoo_conn: "10.211.55.3:2181"
 
 # brokerId
 broker_id: 0
