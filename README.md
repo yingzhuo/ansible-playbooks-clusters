@@ -33,6 +33,7 @@
 #### Zookeeper
 
 * [standalone](./_wiki/zookeeper-standalone.md)
+* [cluster](./_wiki/zookeeper-cluster.md)
 
 #### Kafka
 

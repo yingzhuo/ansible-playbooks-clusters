@@ -5,6 +5,15 @@
     owner: root
     group: root
 
+- name: create myid file in data dir
+  lineinfile:
+    path: "{{ data_dir }}/myid"
+    line: "{{ broker_id }}"
+    owner: root
+    group: root
+    create: yes
+  when: cluster_type == "cluster"
+
 - name: create config dir
   file:
     path: "{{ config_dir }}"
@@ -41,6 +50,7 @@
 - name: call 'sudo systemctl daemon-reload'
   shell:
     cmd: "sudo systemctl daemon-reload"
+  changed_when: no
 
 - name: start {{ service_name }} service
   service:

@@ -17,3 +17,10 @@ clientPort={{ listen_port }}
 
 # admin server
 admin.enableServer=false
+
+{% if cluster_type == "cluster" %}
+# cluster info
+{% for info in cluster_infos %}
+{{ info.broker_id }}:{{ info.hostname }}:{{ info.listen_port_2 }}:{{ info.listen_port_3 }}
+{% endfor %}
+{% endif %}

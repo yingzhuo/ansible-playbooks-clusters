@@ -21,3 +21,6 @@ listen_port: 2181
 
 # 集群类别
 cluster_type: "standalone"
+
+# 节点ID
+broker_id: 0

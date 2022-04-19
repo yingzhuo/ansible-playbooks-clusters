@@ -1,0 +1,42 @@
+# java home
+java_home: "/usr/local/java-home"
+
+# 服务名称
+service_name: "zookeeper-1"
+
+# 安装目录
+install_dir: "/usr/local/zookeeper"
+
+# 配置文件目录
+config_dir: "/etc/zookeeper/1"
+
+# 数据目录
+data_dir: "/data/zookeeper/1"
+
+# 日志目录
+log_dir: "/var/log/zookeeper/1"
+
+# 监听端口
+listen_port: 2181
+
+# 集群类别
+cluster_type: "cluster"
+
+# 节点ID
+broker_id: 1
+
+cluster_infos:
+  - broker_id: 1
+    hostname: 10.211.55.3
+    listen_port_2: 2888
+    listen_port_3: 3888
+
+  - broker_id: 2
+    hostname: 10.211.55.3
+    listen_port_2: 2889
+    listen_port_3: 3889
+
+  - broker_id: 3
+    hostname: 10.211.55.3
+    listen_port_2: 2890
+    listen_port_3: 3890
