@@ -20,4 +20,4 @@ ansible-playbook playbook.kafka-broker-remove.yml -e @./myvars/kafka/standalone.
 
 ## 参考
 
-* [SSL双向验证](./kafka-ssl.md)
+* [如何SSL双向验证秘钥库文件](./cert-generator.sh)
