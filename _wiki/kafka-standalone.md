@@ -7,15 +7,17 @@
 ## 安装
 
 ```bash
-ansible-playbook playbook.kafka-broker.yml -e @./myvars/kafka/standalone.yml \
-  -e "HOSTS=kafka_standalone"
+ansible-playbook playbook.kafka-broker.yml -e @./myvars/kafka/standalone.yml -e "HOSTS=kafka_standalone"
 ```
 
 ## 删除节点(可选)
 
 ```bash
-ansible-playbook playbook.kafka-broker-remove.yml -e @./myvars/kafka/standalone.yml \
-  -e "HOSTS=kafka_standalone"
+ansible-playbook playbook.kafka-broker-remove.yml -e @./myvars/kafka/standalone.yml -e "HOSTS=kafka_standalone"
 ```
 
 **注意：** 将删除所有的数据和配置文件但不会卸载依赖的软件和系统配置。
+
+## 参考
+
+* [SSL双向验证](./kafka-ssl.md)

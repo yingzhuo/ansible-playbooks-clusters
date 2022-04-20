@@ -17,7 +17,6 @@
     - "{{ log_dir }}"
     - "{{ pid_dir }}"
     - "{{ data_dir }}"
-#    - "{{ install_dir }}"
 
 - name: call 'sudo systemctl daemon-reload'
   shell:
