@@ -3,6 +3,8 @@
 # 使用前注意修改变量
 # 作者: 应卓
 
+set -e
+
 # 集群所有机器的IP地址
 IPADDRESS_LIST=("10.211.55.3" "10.211.55.4" "10.211.55.5")
 
@@ -18,22 +20,21 @@ STORE_PASSWORD="123456"
 # 是否删除中间文件 (yes | no)
 REMOVE_MIDDLE_FILES="no"
 
+# 是否打包最后结果 (yes | no)
+ZIP_ALL="yes"
+
 # ----------------------------------------------------------------------------------------------------------------------
 
-# 清空目录
-rm -rf ./root ./server ./client
+# 清空目录及压缩文件
+rm -rf ./root ./server ./client ./generated-jks ./generated-jks.tgz || true
 
 # 创建目录
 mkdir -p ./{root,server,client}
 
 # 生成根证书与根证书秘钥以及签名请求文件
-openssl genrsa -out ./root/ca-key 2048
-openssl req -new -out ./root/ca-csr -key ./root/ca-key -subj "/C=CN/ST=shanghai/L=shanghai/O=unknown/CN=whatever"
-openssl x509 -req -in ./root/ca-csr -out ./root/ca-cert -signkey ./root/ca-key -CAcreateserial -days "$EXPIRE_DAYS"
-
-if [ "$REMOVE_MIDDLE_FILES" == "yes" ]; then
-  rm -rf ./root/ca-csr
-fi
+openssl genrsa -out ./root/ca.key 2048
+openssl req -new -out ./root/ca.csr -key ./root/ca.key -subj "/C=CN/ST=shanghai/L=shanghai/O=unknown/CN=whatever"
+openssl x509 -req -in ./root/ca.csr -out ./root/ca.cert -signkey ./root/ca.key -CAcreateserial -days "$EXPIRE_DAYS"
 
 for i in "${!IPADDRESS_LIST[@]}"; do
 
@@ -60,13 +61,13 @@ for i in "${!IPADDRESS_LIST[@]}"; do
     -alias "$ip" \
     -keyalg rsa \
     -keysize 2048 \
-    -file ./server/"$ip-server.cert-file"
+    -file ./server/"$ip-server.csr"
 
   openssl x509 -req \
-    -CA ./root/ca-cert \
-    -CAkey ./root/ca-key \
-    -in ./server/"$ip-server.cert-file" \
-    -out ./server/"$ip-server.cert-signed" \
+    -CA ./root/ca.cert \
+    -CAkey ./root/ca.key \
+    -in ./server/"$ip-server.csr" \
+    -out ./server/"$ip-server.cert" \
     -CAcreateserial \
     -days "$EXPIRE_DAYS" \
     -passin pass:"$KEY_PASSWORD"
@@ -77,7 +78,7 @@ for i in "${!IPADDRESS_LIST[@]}"; do
       -storepass "$STORE_PASSWORD" \
       -import \
       -alias CARoot \
-      -file ./root/ca-cert \
+      -file ./root/ca.cert \
       -noprompt
   fi
 
@@ -86,13 +87,8 @@ for i in "${!IPADDRESS_LIST[@]}"; do
     -storepass "$STORE_PASSWORD" \
     -import \
     -alias "$ip" \
-    -file ./server/"$ip-server.cert-signed" \
+    -file ./server/"$ip-server.cert" \
     -noprompt
-
-  if [ "$REMOVE_MIDDLE_FILES" == "yes" ]; then
-    rm -rf ./server/"$ip-server.cert-file"
-    rm -rf ./server/"$ip-server.cert-signed"
-  fi
 
 done
 
@@ -100,18 +96,30 @@ keytool \
   -keystore ./client/client.truststore.jks \
   -storepass "$STORE_PASSWORD" \
   -alias CARoot \
-  -import -file ./root/ca-cert \
+  -import -file ./root/ca.cert \
   -noprompt
 
 keytool \
   -keystore ./server/server.truststore.jks \
   -storepass "$STORE_PASSWORD" \
   -alias CARoot \
-  -import -file ./root/ca-cert \
+  -import -file ./root/ca.cert \
   -noprompt
 
 if [ "$REMOVE_MIDDLE_FILES" == "yes" ]; then
-  rm -rf ./.srl
+  rm -rf ./root/ca.csr
+  rm -rf ./server/*-server.csr
+  rm -rf ./server/*-server.cert
 fi
 
-exit 0
+rm -rf ./.srl
+
+if [ "$ZIP_ALL" == "yes" ]; then
+  mkdir -p ./generated-jks
+  cp -R ./root ./generated-jks
+  cp -R ./server ./generated-jks
+  cp -R ./client ./generated-jks
+
+  tar -czf ./generated-jks.tgz ./generated-jks
+  rm -rf ./root ./server ./client ./generated-jks
+fi
