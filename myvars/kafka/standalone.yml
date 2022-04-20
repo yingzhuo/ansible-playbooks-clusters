@@ -28,5 +28,11 @@ zoo_conn: "10.211.55.3:2181"
 # brokerId
 broker_id: 0
 
+# 是否开启SSL双向验证
+ssl_enabled: true
+
+# SSL相关文件存放位置
+ssl_key_dir: /etc/kafka
+
 # 集群类型
 cluster_type: "standalone"

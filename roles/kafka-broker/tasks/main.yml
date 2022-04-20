@@ -19,6 +19,14 @@
     owner: root
     group: root
 
+- name: create ssl files directory
+  file:
+    path: "{{ ssl_key_dir }}"
+    state: directory
+    owner: root
+    group: root
+  when: ssl_enabled
+
 - name: copy main configuration file
   template:
     src: server.properties.j2
@@ -29,6 +37,17 @@
   notify:
     - restart {{ service_name }} service
 
+- name: copy ssl files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ ssl_key_dir }}/{{ item }}"
+    owner: root
+    group: root
+  with_items:
+    - "kafka.keystore.jks"
+    - "kafka.truststore.jks"
+  when: ssl_enabled
+
 - name: copy log4j configuration file
   template:
     src: log4j.properties.j2
@@ -38,14 +57,6 @@
     mode: "0644"
   notify:
     - restart {{ service_name }} service
-
-- name: reset data directory owner and group
-  file:
-    path: "{{ data_dir }}"
-    state: directory
-    owner: root
-    group: root
-    recurse: yes
 
 - name: copy service file env-file for systemctl
   template:

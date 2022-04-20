@@ -9,11 +9,32 @@ broker.id={{ broker_id }}
 ## Socket Server Settings
 ########################################################################################################################
 
+{% if ssl_enabled == false %}
 # 监听网卡与监听端口
 listeners=PLAINTEXT://:9092
 
 # 广播地址
 advertised.listeners=PLAINTEXT://{{ ansible_host }}:9092
+
+{% else %}
+listeners=SSL://:9092
+
+# 广播地址
+advertised.listeners=SSL://{{ ansible_host }}:9092
+
+# 集群内部通行依然使用SSL
+security.inter.broker.protocol=SSL
+
+# 双向认证
+ssl.client.auth=required
+
+ssl.truststore.location={{ ssl_key_dir }}/kafka.truststore.jks
+ssl.truststore.password=123456
+ssl.keystore.location={{ ssl_key_dir }}/kafka.keystore.jks
+ssl.keystore.password=123456
+ssl.key.password=123456
+ssl.endpoint.identification.algorithm=
+{% endif %}
 
 # 协议映射
 listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
