@@ -44,9 +44,11 @@
     owner: root
     group: root
   with_items:
-    - "kafka.keystore.jks"
-    - "kafka.truststore.jks"
+    - "server.keystore.jks"
+    - "server.truststore.jks"
   when: ssl_enabled
+  notify:
+    - restart {{ service_name }} service
 
 - name: copy log4j configuration file
   template:

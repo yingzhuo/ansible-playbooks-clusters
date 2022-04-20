@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# 生成JavaKeyStore用于Java应用程序的双向SSL验证等
+# 使用前注意修改变量
+# 作者: 应卓
 
 # 集群所有机器的IP地址
 IPADDRESS_LIST=("10.211.55.3" "10.211.55.4" "10.211.55.5")
@@ -12,6 +15,9 @@ KEY_PASSWORD="123456"
 # JKS秘钥库密码 (所有秘钥库使用同一密码)
 STORE_PASSWORD="123456"
 
+# 是否删除中间文件 (yes | no)
+REMOVE_MIDDLE_FILES="no"
+
 # ----------------------------------------------------------------------------------------------------------------------
 
 # 清空目录
@@ -20,10 +26,14 @@ rm -rf ./root ./server ./client
 # 创建目录
 mkdir -p ./{root,server,client}
 
-# 生成根证书私钥文件
+# 生成根证书与根证书秘钥以及签名请求文件
 openssl genrsa -out ./root/ca-key 2048
 openssl req -new -out ./root/ca-csr -key ./root/ca-key -subj "/C=CN/ST=shanghai/L=shanghai/O=unknown/CN=whatever"
 openssl x509 -req -in ./root/ca-csr -out ./root/ca-cert -signkey ./root/ca-key -CAcreateserial -days "$EXPIRE_DAYS"
+
+if [ "$REMOVE_MIDDLE_FILES" == "yes" ]; then
+  rm -rf ./root/ca-csr
+fi
 
 for i in "${!IPADDRESS_LIST[@]}"; do
 
@@ -79,7 +89,10 @@ for i in "${!IPADDRESS_LIST[@]}"; do
     -file ./server/"$ip-server.cert-signed" \
     -noprompt
 
-  rm -rf ./server/"$ip-server.cert-file"
+  if [ "$REMOVE_MIDDLE_FILES" == "yes" ]; then
+    rm -rf ./server/"$ip-server.cert-file"
+    rm -rf ./server/"$ip-server.cert-signed"
+  fi
 
 done
 
@@ -97,4 +110,8 @@ keytool \
   -import -file ./root/ca-cert \
   -noprompt
 
-rm -rf ./.srl
+if [ "$REMOVE_MIDDLE_FILES" == "yes" ]; then
+  rm -rf ./.srl
+fi
+
+exit 0
