@@ -1,25 +1,25 @@
-# The number of milliseconds of each tick
+# 服务器与客户端通信心跳 (毫秒)
+# 集群内部通信心跳 (毫秒)
 tickTime=2000
 
-# The number of ticks that the initial
-# synchronization phase can take
-initLimit=10
+# Leader与Follower初始化时经历心跳数最大容忍次数
+# 超出则任务集群构建失败
+initLimit=20
 
-# The number of ticks that can pass between
-# sending a request and getting an acknowledgement
-syncLimit=5
+# Leader与Follower通信如果超出心跳数则认为Follower离线
+syncLimit=10
 
-# the directory where the snapshot is stored.
+# 数据目录
 dataDir={{ data_dir }}
 
-# the port at which the clients will connect
+# 监听端口
 clientPort={{ listen_port }}
 
 # admin server
 admin.enableServer=false
 
 {% if cluster_type == "cluster" %}
-# cluster info
+# 集群信息
 {% for info in cluster_infos %}
 {{ info.broker_id }}:{{ info.hostname }}:{{ info.listen_port_2 }}:{{ info.listen_port_3 }}
 {% endfor %}

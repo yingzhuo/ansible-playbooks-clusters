@@ -7,8 +7,7 @@
 ## 安装
 
 ```bash
-ansible-playbook playbook.zookeeper-broker.yml -e @./myvars/zookeeper/standalone.yml \
-  -e "HOSTS=zookeeper_standalone"
+ansible-playbook playbook.zookeeper-broker.yml -e @./myvars/zookeeper/standalone.yml -e "HOSTS=zookeeper_standalone"
 ```
 
 ## 删除节点(可选)

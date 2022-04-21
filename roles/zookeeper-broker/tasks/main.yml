@@ -36,6 +36,7 @@
     group: root
   notify:
     - call 'sudo systemctl daemon-reload'
+    - restart {{ service_name }} service
 
 - name: copy systemctl config file
   template:
