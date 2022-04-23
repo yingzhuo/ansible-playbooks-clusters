@@ -44,8 +44,8 @@
     owner: root
     group: root
   with_items:
-    - "server.keystore.jks"
-    - "server.truststore.jks"
+    - "server.truststore.p12"
+    - "server.keystore.p12"
   when: ssl_enabled
   notify:
     - restart {{ service_name }} service
