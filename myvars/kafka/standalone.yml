@@ -22,6 +22,9 @@ config_dir: /etc/kafka
 # 监听端口
 listen_port: 9092
 
+# zookeeper服务
+zoo_service: "zookeeper"
+
 # zookeeper连接
 zoo_conn: "10.211.55.3:2181"
 

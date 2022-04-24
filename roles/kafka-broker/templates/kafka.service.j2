@@ -1,7 +1,11 @@
 [Unit]
 Description=Kafka
 Documentation=https://kafka.apache.org/documentation/
+{% if zoo_service != "" %}
+Requires={{ zoo_service }}.service
+{% else %}
 After=syslog.target
+{% endif %}
 
 [Service]
 Type=simple
