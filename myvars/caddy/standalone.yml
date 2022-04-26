@@ -1,0 +1,7 @@
+service_name: "caddy"
+
+# 安装目录
+install_dir: /usr/local/caddy
+
+# 配置目录
+config_dir: /etc/caddy

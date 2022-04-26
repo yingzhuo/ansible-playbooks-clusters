@@ -45,6 +45,9 @@
 [nginx_standalone]
 10.211.55.3
 
+[caddy_standalone]
+10.211.55.3
+
 [rabbitmq_standalone]
 10.211.55.3
 
