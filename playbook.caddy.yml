@@ -1,5 +1,0 @@
-- name: install and setup caddy
-  hosts: "{{ HOSTS }}"
-  gather_facts: no
-  roles:
-    - caddy
