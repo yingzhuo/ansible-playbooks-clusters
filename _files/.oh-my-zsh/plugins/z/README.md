@@ -19,5 +19,5 @@ plugins=(... z)
 
 ### Further reading
 
-For advanced usage and details of z, see [README](README) (in man page format, copied from [rupa/z](https://github.com/rupa/z)).
+For advanced usage and details of z, see [README](./README) (in man page format, copied from [rupa/z](https://github.com/rupa/z)).
 
