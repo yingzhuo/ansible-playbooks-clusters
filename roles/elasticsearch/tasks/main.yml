@@ -1,0 +1,30 @@
+- name: copy primary config file
+  template:
+    src: elasitcsearch.yml.j2
+    dest: /etc/elasticsearch/elasitcsearch.yml
+    owner: root
+    group: elasticsearch
+
+- name: copy jvm config file
+  template:
+    src: jvm.options.j2
+    dest: /etc/elasticsearch/jvm.options
+    owner: root
+    group: elasticsearch
+  notify:
+    - restart es
+
+- name: setup data dir
+  file:
+    path: "{{ data_dir }}"
+    state: directory
+    owner: elasticsearch
+    group: elasticsearch
+  notify:
+    - restart es
+
+- name: startup es
+  service:
+    name: elasticsearch
+    state: started
+    enabled: yes

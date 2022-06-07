@@ -1,0 +1,4 @@
+- name: setup yum repo
+  copy:
+    src: "elastic.repo"
+    dest: "/etc/yum.repos.d/elastic.repo"

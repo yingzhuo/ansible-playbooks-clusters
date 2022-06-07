@@ -72,6 +72,9 @@
 [zookeeper_cluster_3]
 10.211.55.3
 
+[elasticsearch_standalone]
+10.211.55.3
+
 [mail_client]
 10.211.55.3
 
