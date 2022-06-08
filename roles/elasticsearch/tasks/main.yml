@@ -3,18 +3,18 @@
     name: elasticsearch
     state: present
 
-- name: copy primary config file
+- name: copy primary config file for es
   template:
-    src: elasticsearch.yml.j2
+    src: elasticsearch/elasticsearch.yml.j2
     dest: /etc/elasticsearch/elasticsearch.yml
     owner: root
     group: elasticsearch
   notify:
     - restart elasticsearch
 
-- name: copy jvm config file
+- name: copy jvm config file for es
   template:
-    src: jvm.options.j2
+    src: elasticsearch/jvm.options.j2
     dest: /etc/elasticsearch/jvm.options
     owner: root
     group: elasticsearch
@@ -38,5 +38,27 @@
 - name: start elasticsearch service
   service:
     name: elasticsearch
+    state: started
+    enabled: yes
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+- name: install kibana
+  yum:
+    name: kibana
+    state: present
+
+- name: copy primary config file for kibana
+  template:
+    src: kibana/kibana.yml.j2
+    dest: /etc/kibana/kibana.yml
+    owner: root
+    group: kibana
+  notify:
+    - restart kibana
+
+- name: start kibana service
+  service:
+    name: kibana
     state: started
     enabled: yes
