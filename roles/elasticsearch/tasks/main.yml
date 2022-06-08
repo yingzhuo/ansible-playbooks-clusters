@@ -1,7 +1,12 @@
+- name: install elasticsearch
+  yum:
+    name: elasticsearch
+    state: present
+
 - name: copy primary config file
   template:
-    src: elasitcsearch.yml.j2
-    dest: /etc/elasticsearch/elasitcsearch.yml
+    src: elasticsearch.yml.j2
+    dest: /etc/elasticsearch/elasticsearch.yml
     owner: root
     group: elasticsearch
 
@@ -12,7 +17,7 @@
     owner: root
     group: elasticsearch
   notify:
-    - restart es
+    - restart elasticsearch
 
 - name: setup data dir
   file:
@@ -21,9 +26,9 @@
     owner: elasticsearch
     group: elasticsearch
   notify:
-    - restart es
+    - restart elasticsearch
 
-- name: startup es
+- name: startup elasticsearch
   service:
     name: elasticsearch
     state: started
