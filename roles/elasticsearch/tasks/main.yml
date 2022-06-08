@@ -9,6 +9,8 @@
     dest: /etc/elasticsearch/elasticsearch.yml
     owner: root
     group: elasticsearch
+  notify:
+    - restart elasticsearch
 
 - name: copy jvm config file
   template:
@@ -19,16 +21,21 @@
   notify:
     - restart elasticsearch
 
-- name: setup data dir
+- name: create data dir
   file:
     path: "{{ data_dir }}"
     state: directory
     owner: elasticsearch
     group: elasticsearch
-  notify:
-    - restart elasticsearch
 
-- name: startup elasticsearch
+- name: create log dir
+  file:
+    path: "{{ log_dir }}"
+    state: directory
+    owner: elasticsearch
+    group: elasticsearch
+
+- name: start elasticsearch service
   service:
     name: elasticsearch
     state: started
