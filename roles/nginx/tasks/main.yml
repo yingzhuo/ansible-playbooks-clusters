@@ -39,7 +39,7 @@
     dest: "/etc/nginx/htpasswd/yingzhuo.com.password"
     mode: '0644'
   notify:
-    - restart nginx
+    - restart nginx service
 
 - name: create dir for sites
   file:
@@ -66,12 +66,15 @@
 
 - name: copy vhost config files
   copy:
-    dest: "/etc/nginx/conf.d/{{ item }}"
     src: "vhost/{{ item }}"
+    dest: "/etc/nginx/conf.d/{{ item }}"
     owner: root
     group: root
   with_items:
     - www.yingzhuo.com.conf
+    - es.yingzhuo.com.conf
+  notify:
+    - restart nginx service
 
 - name: startup nginx
   service:
