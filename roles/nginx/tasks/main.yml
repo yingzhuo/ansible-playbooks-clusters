@@ -41,6 +41,38 @@
   notify:
     - restart nginx
 
+- name: create dir for sites
+  file:
+    path: /data/nginx
+    state: directory
+    owner: root
+    group: root
+
+- name: sync homepage content
+  synchronize:
+    mode: push
+    src: www.yingzhuo.com
+    dest: /data/nginx
+    archive: no
+    links: no
+    recursive: yes
+    rsync_opts:
+      - "--delete"
+      - "--delete-excluded"
+      - "--exclude=.DS_Store"
+      - "--exclude=.idea*"
+      - "--exclude=.git*"
+  changed_when: no
+
+- name: copy vhost config files
+  copy:
+    dest: "/etc/nginx/conf.d/{{ item }}"
+    src: "vhost/{{ item }}"
+    owner: root
+    group: root
+  with_items:
+    - www.yingzhuo.com.conf
+
 - name: startup nginx
   service:
     name: nginx

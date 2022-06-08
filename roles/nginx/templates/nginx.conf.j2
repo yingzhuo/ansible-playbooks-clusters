@@ -25,28 +25,28 @@ http {
     include             /etc/nginx/mime.types;
     default_type        application/octet-stream;
 
-    server {
-        listen       80;
-        server_name  _;
-        root         /usr/share/nginx/html;
-
-        include /etc/nginx/default.d/*.conf;
-
-        error_page 404 /404.html;
-        location = /404.html {
-        }
-
-        error_page 500 502 503 504 /50x.html;
-
-        location = /50x.html {
-        }
-
-        # status页面
-        location = /status {
-            stub_status     on;
-            access_log      off;
-        }
-    }
+    #server {
+    #    listen       80;
+    #    server_name  _;
+    #    root         /usr/share/nginx/html;
+    #
+    #    include /etc/nginx/default.d/*.conf;
+    #
+    #    error_page 404 /404.html;
+    #    location = /404.html {
+    #    }
+    #
+    #    error_page 500 502 503 504 /50x.html;
+    #
+    #    location = /50x.html {
+    #    }
+    #
+    #    # status页面
+    #    location = /status {
+    #        stub_status     on;
+    #        access_log      off;
+    #    }
+    #}
 
     include /etc/nginx/conf.d/*.conf;
 }

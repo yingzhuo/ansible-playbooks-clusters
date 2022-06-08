@@ -39,6 +39,10 @@
 
 * [standalone](./_wiki/kafka-standalone.md)
 
+#### ElasticSearch
+
+* [standalone](./_wiki/elasticsearch.md)
+
 #### Nginx
 
 * [standalone](./_wiki/nginx-standalone.md)
