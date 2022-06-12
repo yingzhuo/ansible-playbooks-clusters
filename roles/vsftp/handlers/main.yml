@@ -1,0 +1,4 @@
+- name: retstart vsftpd serivce
+  service:
+    name: vsftpd
+    state: restarted

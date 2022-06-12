@@ -1,0 +1,40 @@
+- name: install vsftpd
+  yum:
+    name:
+      - vsftpd
+      - ftp
+    state: present
+
+- name: copy config file
+  template:
+    src: "vsftpd.conf"
+    dest: "/etc/vsftpd/vsftpd.conf"
+    owner: root
+    group: root
+    mode: "0600"
+  notify:
+    - retstart vsftpd serivce
+
+- name: copy user list
+  template:
+    src: "user_list"
+    dest: "/etc/vsftpd/user_list"
+    owner: root
+    group: root
+    mode: "0600"
+  notify:
+    - retstart vsftpd serivce
+
+- name: startup vsftpd serivce
+  service:
+    name: vsftpd
+    state: started
+    enabled: yes
+
+- name: create user for ftp service
+  user:
+    name: vsftp
+    system: no
+    create_home: yes
+    state: present
+    password: "$6$10UHw.wk$lOvw2ry8aoH/wmnA9wzRvNzmRQ8By7fJGXgOLBX/NTcU.Bsd6WROicyRFWM6X5QQ9lneuMpjWLscLDz9KvQuH." # G_esn_6u2Jxf4Bxz

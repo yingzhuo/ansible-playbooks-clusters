@@ -60,3 +60,9 @@ ansible-playbook playbook.ntp.yml -e "HOSTS=all"
 ```bash
 ansible-playbook playbook.cleanup-script.yml -e "HOSTS=all"
 ```
+
+## 安装vsftpd
+
+```bash
+ansible-playbook playbook.vsftp.yml -e "HOSTS=vsftp"
+```

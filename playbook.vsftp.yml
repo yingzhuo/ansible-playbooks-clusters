@@ -1,0 +1,5 @@
+- name: install and setup vsftpd server
+  hosts: "{{ HOSTS }}"
+  gather_facts: no
+  roles:
+    - vsftp
