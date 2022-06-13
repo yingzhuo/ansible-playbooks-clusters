@@ -7,7 +7,7 @@
 
 - name: copy config file
   template:
-    src: "vsftpd.conf"
+    src: "vsftpd.conf.j2"
     dest: "/etc/vsftpd/vsftpd.conf"
     owner: root
     group: root
@@ -17,7 +17,7 @@
 
 - name: copy user list
   template:
-    src: "user_list"
+    src: "user_list.j2"
     dest: "/etc/vsftpd/user_list"
     owner: root
     group: root
