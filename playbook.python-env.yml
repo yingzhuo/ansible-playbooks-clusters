@@ -1,0 +1,5 @@
+- name: setup python application env
+  hosts: "{{ HOSTS }}"
+  gather_facts: no
+  roles:
+    - python-env

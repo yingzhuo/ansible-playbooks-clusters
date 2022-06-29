@@ -6,6 +6,10 @@
 
 * [misc](_wiki/misc.md)
 
+#### Python
+
+* [python-env](_wiki/python-env.md)
+
 #### Kernel
 
 * [kernel](_wiki/kernel.md)

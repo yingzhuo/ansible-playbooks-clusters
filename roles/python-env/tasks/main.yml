@@ -1,0 +1,24 @@
+- name: install c language complier
+  yum:
+    name:
+      - gcc
+      - openssl-devel
+      - bzip2-devel
+      - libffi-devel
+      - make
+
+- name: create user for python app
+  user:
+    name: python
+    create_home: yes
+    password: "$6$hLeqQpSB$ZhgiK7rnsybbgLP5kiAC6tivn1whoxw01VciENqSll/Leyg4jmP4vbN1Mv7t59nDwQn9Da.q8Wv82V4rU2PVW/" # python
+    groups:
+      - python
+      - wheel
+
+- name: create venvs dir
+  file:
+    path: ~python/venvs
+    state: directory
+    owner: python
+    group: python
