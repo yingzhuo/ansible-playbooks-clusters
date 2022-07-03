@@ -22,3 +22,10 @@
     state: directory
     owner: python
     group: python
+
+- name: setup mirrors
+  template:
+    src: pip.conf.j2
+    dest: /etc/pip.conf
+    owner: root
+    group: root
