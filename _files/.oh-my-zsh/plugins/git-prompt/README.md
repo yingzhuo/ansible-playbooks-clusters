@@ -23,7 +23,8 @@ The prompt may look like the following:
 - `(status|●2)`: on branch `status`, 2 files staged
 - `(master|✚7…)`: on branch `master`, 7 files changed, some files untracked
 - `(master|✖2✚3)`: on branch `master`, 2 conflicts, 3 files changed
-- `(experimental↓2↑3|✔)`: on branch `experimental`; your branch has diverged by 3 commits, remote by 2 commits; the repository is otherwise clean
+- `(experimental↓2↑3|✔)`: on branch `experimental`; your branch has diverged by 3 commits, remote by 2 commits; the
+  repository is otherwise clean
 - `(:70c2952|✔)`: not on any branch; parent commit has hash `70c2952`; the repository is otherwise clean
 - `(master|⚑2)`: on branch `master`, there are 2 stashed changes
 

@@ -2,7 +2,8 @@
 
 **Maintainer:** [@RobLoach](https://github.com/RobLoach)
 
-Adds integration with [asdf](https://github.com/asdf-vm/asdf), the extendable version manager, with support for Ruby, Node.js, Elixir, Erlang and more.
+Adds integration with [asdf](https://github.com/asdf-vm/asdf), the extendable version manager, with support for Ruby,
+Node.js, Elixir, Erlang and more.
 
 ### Installation
 
@@ -13,6 +14,7 @@ Adds integration with [asdf](https://github.com/asdf-vm/asdf), the extendable ve
   ```
 
 2. [Install asdf](https://github.com/asdf-vm/asdf#setup) by running the following:
+
   ```
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf
   ```

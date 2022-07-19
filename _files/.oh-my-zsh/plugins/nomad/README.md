@@ -1,6 +1,7 @@
 # Nomad
 
-The `nomad` plugin provides a simple autocompletion for [Nomad](https://nomadproject.io/), a tool from Hashicorp for easily deploy applications at any scale.
+The `nomad` plugin provides a simple autocompletion for [Nomad](https://nomadproject.io/), a tool from Hashicorp for
+easily deploy applications at any scale.
 
 ## Usage
 
@@ -10,6 +11,6 @@ The `nomad` plugin provides a simple autocompletion for [Nomad](https://nomadpro
    plugins=(... nomad)
    ```
 
-2.  Install [Nomad](https://nomadproject.io/)
+2. Install [Nomad](https://nomadproject.io/)
 
-3.  Type `nomad` into your prompt and hit `TAB` to see available completion options.
+3. Type `nomad` into your prompt and hit `TAB` to see available completion options.

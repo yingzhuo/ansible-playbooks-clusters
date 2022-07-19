@@ -1,7 +1,6 @@
 # zoxide plugin
 
-Initializes [zoxide](https://github.com/ajeetdsouza/zoxide), a smarter cd
-command for your terminal.
+Initializes [zoxide](https://github.com/ajeetdsouza/zoxide), a smarter cd command for your terminal.
 
 ![Tutorial](https://raw.githubusercontent.com/ajeetdsouza/zoxide/97dc08347d9dbf5b5a4516b79e0ac27366b962ce/contrib/tutorial.webp)
 

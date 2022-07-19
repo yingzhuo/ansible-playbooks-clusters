@@ -1,7 +1,7 @@
 # Docker-compose
 
-This plugin provides completion for [docker-compose](https://docs.docker.com/compose/) as well as some
-aliases for frequent docker-compose commands.
+This plugin provides completion for [docker-compose](https://docs.docker.com/compose/) as well as some aliases for
+frequent docker-compose commands.
 
 To use it, add docker-compose to the plugins array of your zshrc file:
 

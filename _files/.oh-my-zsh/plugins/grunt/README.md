@@ -3,6 +3,7 @@
 This plugin adds completions for [grunt](https://github.com/gruntjs/grunt).
 
 To use it, add `grunt` to the plugins array of your `.zshrc` file:
+
 ```zsh
 plugins=(... grunt)
 ```
@@ -10,6 +11,7 @@ plugins=(... grunt)
 ## Enable caching
 
 If you want to use the cache, set the following in your `.zshrc`:
+
 ```zsh
 zstyle ':completion:*' use-cache yes
 ```

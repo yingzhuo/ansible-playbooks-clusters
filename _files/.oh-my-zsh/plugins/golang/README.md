@@ -1,7 +1,7 @@
 # Golang plugin
 
-This plugin adds completion for the [Go Programming Language](https://golang.org/),
-as well as some aliases for common Golang commands.
+This plugin adds completion for the [Go Programming Language](https://golang.org/), as well as some aliases for common
+Golang commands.
 
 To use it, add `golang` to the plugins array in your zshrc file:
 

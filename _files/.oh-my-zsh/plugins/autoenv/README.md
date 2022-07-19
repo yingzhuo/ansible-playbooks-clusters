@@ -10,8 +10,7 @@ plugins=(... autoenv)
 
 ## Functions
 
-* `use_env()`: creates and/or activates a virtualenv. For use in `.env` files.
-  See the source code for details.
+* `use_env()`: creates and/or activates a virtualenv. For use in `.env` files. See the source code for details.
 
 ## Requirements
 

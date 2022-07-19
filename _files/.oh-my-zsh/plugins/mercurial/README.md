@@ -1,7 +1,7 @@
 # Mercurial plugin
 
-This plugin adds some handy aliases for using Mercurial as well as a few
-utility and prompt functions that can be used in a theme.
+This plugin adds some handy aliases for using Mercurial as well as a few utility and prompt functions that can be used
+in a theme.
 
 To use it, add `mercurial` to the plugins array in your zshrc file:
 
@@ -38,8 +38,8 @@ plugins=(... mercurial)
 
 - Switch to a theme which uses `hg_prompt_info`
 
-- Or customize the `$PROMPT` variable of your current theme to contain current folder mercurial repo info.
-  This can be done by putting a custom version of the theme in `$ZSH_CUSTOM` or by changing `$PROMPT` in
+- Or customize the `$PROMPT` variable of your current theme to contain current folder mercurial repo info. This can be
+  done by putting a custom version of the theme in `$ZSH_CUSTOM` or by changing `$PROMPT` in
   `.zshrc` after loading the theme.
 
   For example, for the `robbyrussell` theme you need to modify `$PROMPT` var by adding `$(hg_prompt_info)`
@@ -60,8 +60,8 @@ ZSH_THEME_HG_PROMPT_CLEAN="%{$fg[magenta]%})"
 
 ### Display repo branch and directory status in prompt
 
-This is the same as git plugin does. **Note**: additional changes to `.zshrc`, or using a theme designed
-to use `hg_prompt_info`, are required in order for this to work.
+This is the same as git plugin does. **Note**: additional changes to `.zshrc`, or using a theme designed to
+use `hg_prompt_info`, are required in order for this to work.
 
 ## Maintainers
 

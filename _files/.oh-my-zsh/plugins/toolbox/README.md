@@ -10,7 +10,8 @@ plugins=(... toolbox)
 
 ## Prompt function
 
-This plugins adds `toolbox_prompt_info()` function. Using it in your prompt, it will show the toolbox indicator ⬢ (if you are running in a toolbox container), and nothing if not.
+This plugins adds `toolbox_prompt_info()` function. Using it in your prompt, it will show the toolbox indicator ⬢ (if
+you are running in a toolbox container), and nothing if not.
 
 You can use it by adding `$(toolbox_prompt_info)` to your `PROMPT` or `RPROMPT` variable:
 

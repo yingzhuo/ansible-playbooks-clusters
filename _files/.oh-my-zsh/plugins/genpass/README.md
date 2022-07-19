@@ -1,27 +1,23 @@
 # genpass
 
-This plugin provides three unique password generators for ZSH. Each generator
-has at least a 128-bit security margin and generates passwords from the
-cryptographically secure `/dev/urandom`. Each generator can also take an
-optional numeric argument to generate multiple passwords.
+This plugin provides three unique password generators for ZSH. Each generator has at least a 128-bit security margin and
+generates passwords from the cryptographically secure `/dev/urandom`. Each generator can also take an optional numeric
+argument to generate multiple passwords.
 
-To use it from an interactive ZSH, add `genpass` to the plugins array in your
-zshrc file:
+To use it from an interactive ZSH, add `genpass` to the plugins array in your zshrc file:
 
     plugins=(... genpass)
 
-You can also invoke password generators directly (they are implemented as
-standalone executable files), which can be handy when you need to generate
-passwords in a script:
+You can also invoke password generators directly (they are implemented as standalone executable files), which can be
+handy when you need to generate passwords in a script:
 
     ~/.oh-my-zsh/plugins/genpass/genpass-apple 3
 
 ## genpass-apple
 
-Generates a pronounceable pseudoword passphrase of the "cvccvc" consonant/vowel
-syntax, inspired by [Apple's iCloud Keychain password generator][1]. Each
-password has exactly 1 digit placed at the edge of a "word" and exactly 1
-capital letter to satisfy most password security requirements.
+Generates a pronounceable pseudoword passphrase of the "cvccvc" consonant/vowel syntax, inspired
+by [Apple's iCloud Keychain password generator][1]. Each password has exactly 1 digit placed at the edge of a "word" and
+exactly 1 capital letter to satisfy most password security requirements.
 
     % genpass-apple
     gelcyv-foqtam-fotqoh-viMleb-lexduv-6ixfuk
@@ -35,8 +31,7 @@ capital letter to satisfy most password security requirements.
 
 ## genpass-monkey
 
-Generates visually unambiguous random meaningless strings using [Crockford's
-base32][2].
+Generates visually unambiguous random meaningless strings using [Crockford's base32][2].
 
     % genpass-monkey
     xt7gn976e7jj3fstgpy27330x3
@@ -50,9 +45,8 @@ base32][2].
 
 ## genpass-xkcd
 
-Generates passphrases from `/usr/share/dict/words` inspired by the [famous (and
-slightly misleading) XKCD comic][3]. Each passphrase is prepended with a digit
-showing the number of words in the passphrase to adhere to password security
+Generates passphrases from `/usr/share/dict/words` inspired by the [famous (and slightly misleading) XKCD comic][3].
+Each passphrase is prepended with a digit showing the number of words in the passphrase to adhere to password security
 requirements that require digits. Each word is 6 characters or less.
 
     % genpass-xkcd

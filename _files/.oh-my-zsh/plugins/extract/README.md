@@ -1,10 +1,10 @@
 # extract plugin
 
-This plugin defines a function called `extract` that extracts the archive file
-you pass it, and it supports a wide variety of archive filetypes.
+This plugin defines a function called `extract` that extracts the archive file you pass it, and it supports a wide
+variety of archive filetypes.
 
-This way you don't have to know what specific command extracts a file, you just
-do `extract <filename>` and the function takes care of the rest.
+This way you don't have to know what specific command extracts a file, you just do `extract <filename>` and the function
+takes care of the rest.
 
 To use it, add `extract` to the plugins array in your zshrc file:
 
@@ -56,5 +56,5 @@ plugins=(... extract)
 | `zip`             | Zip archive                          |
 | `zst`             | Zstandard file (zstd)                |
 
-See [list of archive formats](https://en.wikipedia.org/wiki/List_of_archive_formats) for
-more information regarding archive formats.
+See [list of archive formats](https://en.wikipedia.org/wiki/List_of_archive_formats) for more information regarding
+archive formats.

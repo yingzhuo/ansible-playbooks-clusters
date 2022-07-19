@@ -1,7 +1,7 @@
 # `svn` plugin
 
-This plugin adds some utility functions to display additional information regarding your current
-svn repository. See https://subversion.apache.org/ for the full svn documentation.
+This plugin adds some utility functions to display additional information regarding your current svn repository.
+See https://subversion.apache.org/ for the full svn documentation.
 
 To use it, add `svn` to your plugins array:
 
@@ -22,8 +22,8 @@ plugins=(... svn)
 
 ## Caveats
 
-The plugin expects the first directory to be the current branch / tag / trunk. So it returns
-the first path element if you don't use branches.
+The plugin expects the first directory to be the current branch / tag / trunk. So it returns the first path element if
+you don't use branches.
 
 ## Usage on themes
 

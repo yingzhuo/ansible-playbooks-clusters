@@ -62,16 +62,19 @@ plugins=(... common-aliases)
 
 ## Global aliases
 
-These aliases are expanded in any position in the command line, meaning you can use them even at the
-end of the command you've typed. Examples:
+These aliases are expanded in any position in the command line, meaning you can use them even at the end of the command
+you've typed. Examples:
 
 Quickly pipe to less:
+
 ```zsh
 $ ls -l /var/log L
 # will run
 $ ls -l /var/log | less
 ```
+
 Silences stderr output:
+
 ```zsh
 $ find . -type f NE
 # will run
@@ -93,8 +96,8 @@ $ find . -type f 2>/dev/null
 
 ## File extension aliases
 
-These are special aliases that are triggered when a file name is passed as the command. For example,
-if the pdf file extension is aliased to `acroread` (a popular Linux pdf reader), when running `file.pdf`
+These are special aliases that are triggered when a file name is passed as the command. For example, if the pdf file
+extension is aliased to `acroread` (a popular Linux pdf reader), when running `file.pdf`
 that file will be open with `acroread`.
 
 ### Reading Docs

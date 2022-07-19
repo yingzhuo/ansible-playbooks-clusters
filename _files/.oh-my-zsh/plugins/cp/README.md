@@ -1,7 +1,6 @@
 # cp plugin
 
-This plugin defines a `cpv` function that uses `rsync` so that you
-get the features and security of this command.
+This plugin defines a `cpv` function that uses `rsync` so that you get the features and security of this command.
 
 To enable, add `cp` to your `plugins` array in your zshrc file:
 

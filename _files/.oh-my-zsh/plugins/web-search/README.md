@@ -57,8 +57,7 @@ Also there are aliases for bang-searching DuckDuckGo:
 ### Custom search engines
 
 If you want to add other search contexts to the plugin, you can use the
-`$ZSH_WEB_SEARCH_ENGINES` variable. Set it before Oh My Zsh is sourced,
-with the following format:
+`$ZSH_WEB_SEARCH_ENGINES` variable. Set it before Oh My Zsh is sourced, with the following format:
 
 ```zsh
 ZSH_WEB_SEARCH_ENGINES=(
@@ -67,13 +66,12 @@ ZSH_WEB_SEARCH_ENGINES=(
 )
 ```
 
-where `<context>` is the name of the search context, and `<URL>` a URL of
-the same type as the search contexts above. For example, to add `reddit`,
-you'd do:
+where `<context>` is the name of the search context, and `<URL>` a URL of the same type as the search contexts above.
+For example, to add `reddit`, you'd do:
 
 ```zsh
 ZSH_WEB_SEARCH_ENGINES=(reddit "https://www.reddit.com/search/?q=")
 ```
 
-These custom search engines will also be turned to aliases, so you can
-both do `web_search reddit <query>` or `reddit <query>`.
+These custom search engines will also be turned to aliases, so you can both do `web_search reddit <query>`
+or `reddit <query>`.

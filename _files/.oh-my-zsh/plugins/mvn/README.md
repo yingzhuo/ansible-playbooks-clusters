@@ -49,11 +49,11 @@ if it's found, or the mvn command otherwise.
 
 ## mvn-color
 
-It's a function that wraps the mvn command to colorize it's output. You can use it in place
-of the `mvn` command. For example: instead of `mvn test`, use `mvn-color test`.
+It's a function that wraps the mvn command to colorize it's output. You can use it in place of the `mvn` command. For
+example: instead of `mvn test`, use `mvn-color test`.
 
-Since [Maven 3.5.0](https://maven.apache.org/docs/3.5.0/release-notes.html) the mvn command
-has colored output, so this function will be soon removed from the plugin.
+Since [Maven 3.5.0](https://maven.apache.org/docs/3.5.0/release-notes.html) the mvn command has colored output, so this
+function will be soon removed from the plugin.
 
 ### Known bugs
 

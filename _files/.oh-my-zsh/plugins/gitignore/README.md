@@ -1,6 +1,7 @@
 # gitignore
 
-This plugin enables you the use of [gitignore.io](https://www.gitignore.io/) from the command line. You need an active internet connection.
+This plugin enables you the use of [gitignore.io](https://www.gitignore.io/) from the command line. You need an active
+internet connection.
 
 To use it, add `gitignore` to the plugins array in your zshrc file:
 

@@ -13,12 +13,12 @@ https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
 ## Settings
 
-By default, the completion doesn't allow option-stacking, meaning if you try to
-complete `docker run -it <TAB>` it won't work, because you're _stacking_ the
+By default, the completion doesn't allow option-stacking, meaning if you try to complete `docker run -it <TAB>` it won't
+work, because you're _stacking_ the
 `-i` and `-t` options.
 
-[You can enable it](https://github.com/docker/cli/commit/b10fb43048) by **adding
-the lines below to your zshrc file**, but be aware of the side effects:
+[You can enable it](https://github.com/docker/cli/commit/b10fb43048) by **adding the lines below to your zshrc file**,
+but be aware of the side effects:
 
 > This enables Zsh to understand commands like `docker run -it
 > ubuntu`. However, by enabling this, this also makes Zsh complete
@@ -53,21 +53,24 @@ the lines below to your zshrc file**, but be aware of the side effects:
 | dtop    | `docker top`                | Display the running processes of a container                                             |
 | dxc     | `docker container exec`     | Run a new command in a running container                                                 |
 | dxcit   | `docker container exec -it` | Run a new command in a running container in an interactive shell                         |
-|         |                             | **Docker Images**                                                                        |
+|         |                             | **Docker
+Images**                                                                        |
 | dib     | `docker image build`        | Build an image from a Dockerfile (same as docker build)                                  |
 | dii     | `docker image inspect`      | Display detailed information on one or more images                                       |
 | dils    | `docker image ls`           | List docker images                                                                       |
 | dipu     | `docker image push`         | Push an image or repository to a remote registry                                         |
 | dirm    | `docker image rm`           | Remove one or more images                                                                |
 | dit     | `docker image tag`          | Add a name and tag to a particular image                                                 |
-|         |                             | **Docker Network**                                                                       |
+|         |                             | **Docker
+Network**                                                                       |
 | dnc     | `docker network create`     | Create a new network                                                                     |
 | dncn    | `docker network connect`    | Connect a container to a network                                                         |
 | dndcn   | `docker network disconnect` | Disconnect a container from a network                                                    |
 | dni     | `docker network inspect`    | Return information about one or more networks                                            |
 | dnls    | `docker network ls`         | List all networks the engine daemon knows about, including those spanning multiple hosts |
 | dnrm    | `docker network rm`         | Remove one or more networks                                                              |
-|         |                             | **Docker Volume**                                                                        |
+|         |                             | **Docker
+Volume**                                                                        |
 | dvi     | `docker volume inspect`     | Display detailed information about one or more volumes                                   |
 | dvls    | `docker volume ls`          | List all the volumes known to  docker                                                    |
 | dvprune | `docker volume prune`       | Cleanup dangling volumes                                                                 |

@@ -1,6 +1,7 @@
 # Vault plugin
 
-Note: this plugin is deprecated. Use the [official autocompletion](https://www.vaultproject.io/docs/commands/index.html#autocompletion) instead.
+Note: this plugin is deprecated. Use
+the [official autocompletion](https://www.vaultproject.io/docs/commands/index.html#autocompletion) instead.
 
 -------
 

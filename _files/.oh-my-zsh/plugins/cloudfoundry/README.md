@@ -1,6 +1,8 @@
 # Cloudfoundry Plugin
 
-This plugin is intended to offer a few simple aliases for regular users of the [Cloud Foundry Cli][1]. Most are just simple aliases that will save a bit of typing. Others include mini functions and or accept parameters. Take a look at the table below for details.
+This plugin is intended to offer a few simple aliases for regular users of the [Cloud Foundry Cli][1]. Most are just
+simple aliases that will save a bit of typing. Others include mini functions and or accept parameters. Take a look at
+the table below for details.
 
 | Alias    | Command                     | Description                                                              |
 |----------|-----------------------------|--------------------------------------------------------------------------|
@@ -46,13 +48,17 @@ cf help -a # Complete list of all possible commands
 cf <COMMAND_NAME> --help # Help on a specific command including arguments and examples
 ```
 
-Alternatively, seek out the [online documentation][3]. And don't forget, there are loads of great [community plugins for the cf-cli][4] command line tool that can greatly extend its power and usefulness.
+Alternatively, seek out the [online documentation][3]. And don't forget, there are loads of
+great [community plugins for the cf-cli][4] command line tool that can greatly extend its power and usefulness.
 
 ## Contributors
 
-Contributed to `oh_my_zsh` by [benwilcock][2].  
+Contributed to `oh_my_zsh` by [benwilcock][2].
 
 [1]: https://docs.cloudfoundry.org/cf-cli/install-go-cli.html
+
 [2]: https://github.com/benwilcock
+
 [3]: https://docs.cloudfoundry.org/cf-cli/getting-started.html
+
 [4]: https://plugins.cloudfoundry.org/

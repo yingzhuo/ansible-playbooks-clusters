@@ -1,7 +1,7 @@
 # Bundler
 
-This plugin adds completion for basic bundler commands, as well as aliases and helper functions for
-an easier experience with bundler.
+This plugin adds completion for basic bundler commands, as well as aliases and helper functions for an easier experience
+with bundler.
 
 To use it, add `bundler` to the plugins array in your zshrc file:
 
@@ -33,12 +33,14 @@ The plugin adds a wrapper for common gems, which:
 
 Common gems wrapped by default (by name of the executable):
 
-`annotate`, `cap`, `capify`, `cucumber`, `foodcritic`, `guard`, `hanami`, `irb`, `jekyll`, `kitchen`, `knife`, `middleman`, `nanoc`, `pry`, `puma`, `rackup`, `rainbows`, `rake`, `rspec`, `rubocop`, `shotgun`, `sidekiq`, `spec`, `spork`, `spring`, `strainer`, `tailor`, `taps`, `thin`, `thor`, `unicorn` and `unicorn_rails`.
+`annotate`, `cap`, `capify`, `cucumber`, `foodcritic`, `guard`, `hanami`, `irb`, `jekyll`, `kitchen`, `knife`
+, `middleman`, `nanoc`, `pry`, `puma`, `rackup`, `rainbows`, `rake`, `rspec`, `rubocop`, `shotgun`, `sidekiq`, `spec`
+, `spork`, `spring`, `strainer`, `tailor`, `taps`, `thin`, `thor`, `unicorn` and `unicorn_rails`.
 
 ### Settings
 
-You can add or remove gems from the list of wrapped commands.
-Please **use the exact name of the executable** and not the gem name.
+You can add or remove gems from the list of wrapped commands. Please **use the exact name of the executable** and not
+the gem name.
 
 #### Include gems to be wrapped (`BUNDLED_COMMANDS`)
 
@@ -64,7 +66,8 @@ This will exclude the `foreman` and `spin` gems (i.e. their executable) from bei
 
 ### Excluded gems
 
-These gems should not be called with `bundle exec`. Please see [issue #2923](https://github.com/ohmyzsh/ohmyzsh/pull/2923) on GitHub for clarification:
+These gems should not be called with `bundle exec`. Please
+see [issue #2923](https://github.com/ohmyzsh/ohmyzsh/pull/2923) on GitHub for clarification:
 
 - `berks`
 - `foreman`

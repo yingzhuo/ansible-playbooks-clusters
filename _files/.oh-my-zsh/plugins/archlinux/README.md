@@ -44,9 +44,8 @@ plugins=(... archlinux)
 | pacmansignkeys | Locally trust all keys passed as parameters               |
 | pacweb         | Open the website of an ArchLinux package                  |
 
-Note: paclist used to print packages with a description which are (1) explicitly installed
-and (2) available for upgrade. Due to flawed scripting, it also printed all packages if no
-upgrades were available. Use `pacman -Que` instead.
+Note: paclist used to print packages with a description which are (1) explicitly installed and (2) available for
+upgrade. Due to flawed scripting, it also printed all packages if no upgrades were available. Use `pacman -Que` instead.
 
 ### AUR helpers
 
@@ -75,7 +74,7 @@ upgrades were available. Use `pacman -Que` instead.
 | aureps  | `aura -As --both`                               | Search for packages in the repositories and AUR                         |
 | auras   | `aura -As --both`                               | Same as above                                                           |
 | auupd   | `sudo aura -Sy`                                 | Update and refresh local package, ABS and AUR databases                 |
-| auupg   | `sudo sh -c "aura -Syu              && aura -Au"` | Sync with repositories before upgrading all packages (from AUR too)   |
+| auupg   | `sudo sh -c "aura -Syu && aura -Au"` | Sync with repositories before upgrading all packages (from AUR too)   |
 | ausu    | `sudo sh -c "aura -Syu --no-confirm && aura -Au --no-confirm"` | Same as `auupg`, but without confirmation                |
 | upgrade[¹](#f1) | `sudo aura -Syu`                        | Sync with repositories before upgrading packages                        |
 
@@ -158,8 +157,8 @@ upgrades were available. Use `pacman -Que` instead.
 ---
 
 <span id="f1">¹</span>
-The `upgrade` alias is set for all package managers. Its value will depend on
-whether the package manager is installed, checked in the following order:
+The `upgrade` alias is set for all package managers. Its value will depend on whether the package manager is installed,
+checked in the following order:
 
 1. `yay`
 2. `trizen`

@@ -1,7 +1,6 @@
 # pylint
 
-This plugin adds aliases and autocompletion for [Pylint](https://www.pylint.org/),
-the Python code style checking tool.
+This plugin adds aliases and autocompletion for [Pylint](https://www.pylint.org/), the Python code style checking tool.
 
 To use it, add `pylint` to the plugins array in your zshrc file:
 

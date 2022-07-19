@@ -7,6 +7,7 @@ Some functionality of this plugin will not work unless you also have the rbenv p
 https://github.com/jf/rbenv-gemset
 
 To use it, add `rbenv` to the plugins array in your zshrc file:
+
 ```zsh
 plugins=(... rbenv)
 ```

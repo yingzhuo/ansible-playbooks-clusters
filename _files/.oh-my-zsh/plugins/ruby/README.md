@@ -1,6 +1,7 @@
 # Ruby plugin
 
-This plugin adds aliases for common commands used in dealing with [Ruby](https://www.ruby-lang.org/en/) and [gem packages](https://rubygems.org/).
+This plugin adds aliases for common commands used in dealing with [Ruby](https://www.ruby-lang.org/en/)
+and [gem packages](https://rubygems.org/).
 
 To use it, add `ruby` to the plugins array in your zshrc file:
 

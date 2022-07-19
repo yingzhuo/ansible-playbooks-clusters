@@ -1,7 +1,7 @@
 # Hanami Plugin
 
-This plugin adds convenient aliases to work with [Hanami](https://hanamirb.org/) via console.
-It's inspired by Rails plugin, so if you've used it, you'll feel like home.
+This plugin adds convenient aliases to work with [Hanami](https://hanamirb.org/) via console. It's inspired by Rails
+plugin, so if you've used it, you'll feel like home.
 
 To use it, add `hanami` to the plugins array in your zshrc file:
 
@@ -11,9 +11,9 @@ plugins=(... hanami)
 
 ## Usage
 
-For example, type `hc` into your console when you're within Hanami project directory to run
-the application console. Have a look at available shortcuts below. You can read more about
-these commands [on the official website](https://hanamirb.org/guides/command-line/applications/).
+For example, type `hc` into your console when you're within Hanami project directory to run the application console.
+Have a look at available shortcuts below. You can read more about these
+commands [on the official website](https://hanamirb.org/guides/command-line/applications/).
 
 ## Aliases
 

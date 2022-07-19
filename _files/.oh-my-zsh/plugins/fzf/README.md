@@ -1,7 +1,7 @@
 # fzf
 
-This plugin tries to find [junegunn's fzf](https://github.com/junegunn/fzf) based on where
-it's been installed, and enables its fuzzy auto-completion and key bindings.
+This plugin tries to find [junegunn's fzf](https://github.com/junegunn/fzf) based on where it's been installed, and
+enables its fuzzy auto-completion and key bindings.
 
 To use it, add `fzf` to the plugins array in your zshrc file:
 

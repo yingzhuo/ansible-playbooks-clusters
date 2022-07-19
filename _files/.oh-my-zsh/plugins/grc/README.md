@@ -10,6 +10,6 @@ plugins=(... grc)
 
 ## Commands
 
-The plugin sources the bundled alias generator from the installation, available at `/etc/grc.zsh`.
-The complete list of wrapped commands may vary depending on the installed version of `grc`, look
-at the file mentioned above (`/etc/grc.zsh`) to see which commands are wrapped.
+The plugin sources the bundled alias generator from the installation, available at `/etc/grc.zsh`. The complete list of
+wrapped commands may vary depending on the installed version of `grc`, look at the file mentioned above (`/etc/grc.zsh`)
+to see which commands are wrapped.

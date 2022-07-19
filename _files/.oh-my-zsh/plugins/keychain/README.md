@@ -1,8 +1,7 @@
 # keychain plugin
 
 This plugin starts automatically [`keychain`](https://www.funtoo.org/Keychain)
-to set up and load whichever credentials you want for both gpg and ssh
-connections.
+to set up and load whichever credentials you want for both gpg and ssh connections.
 
 To enable it, add `keychain` to your plugins:
 
@@ -16,8 +15,8 @@ plugins=(... keychain)
 
 **IMPORTANT: put these settings _before_ the line that sources oh-my-zsh**
 
-**To adjust the agents** that keychain manages, use the `agents` style as
-shown below. By default, only the `gpg` agent is managed.
+**To adjust the agents** that keychain manages, use the `agents` style as shown below. By default, only the `gpg` agent
+is managed.
 
 ```zsh
 zstyle :omz:plugins:keychain agents gpg,ssh

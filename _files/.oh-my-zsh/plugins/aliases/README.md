@@ -2,8 +2,8 @@
 
 **Maintainer:** [@hqingyi](https://github.com/hqingyi)
 
-With lots of 3rd-party amazing aliases installed, this plugin helps list the shortcuts
-that are currently available based on the plugins you have enabled.
+With lots of 3rd-party amazing aliases installed, this plugin helps list the shortcuts that are currently available
+based on the plugins you have enabled.
 
 To use it, add `aliases` to the plugins array in your zshrc file:
 

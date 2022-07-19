@@ -3,6 +3,7 @@
 This plugin adds a few functions that are useful when using [iTerm2](https://www.iterm2.com/).
 
 To use it, add _iterm2_ to the plugins array of your zshrc file:
+
 ```
 plugins=(... iterm2)
 ```

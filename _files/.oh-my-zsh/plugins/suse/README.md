@@ -60,8 +60,8 @@ plugins=(... suse)
 | zse           | `zypper se`                | search for packages                                  |
 | zwp           | `zypper wp`                | list all packages providing the specified capability |
 
-NOTE: `--no-refresh` is passed to zypper for speeding up the calls and avoid errors due to lack
-of root privileges. If you need to refresh the repositories, call `sudo zypper ref` (`zref` alias)
+NOTE: `--no-refresh` is passed to zypper for speeding up the calls and avoid errors due to lack of root privileges. If
+you need to refresh the repositories, call `sudo zypper ref` (`zref` alias)
 before running these aliases.
 
 Related: [#9798](https://github.com/ohmyzsh/ohmyzsh/pull/9798).
@@ -79,6 +79,7 @@ Related: [#9798](https://github.com/ohmyzsh/ohmyzsh/pull/9798).
 | zrr   | `sudo zypper rr`    | remove repositories                      |
 
 ## Services commands
+
 | Alias | Commands           | Description                                                    |
 | ----- | ------------------ | -------------------------------------------------------------- |
 | zas   | `sudo zypper as`   | adds a service specified by URI to the system                  |
@@ -88,6 +89,7 @@ Related: [#9798](https://github.com/ohmyzsh/ohmyzsh/pull/9798).
 | zls   | `zypper ls`        | list services defined on the system                            |
 
 ## Package Locks Management commands
+
 | Alias | Commands         | Description                         |
 | ----- | ---------------- | ----------------------------------- |
 | zal   | `sudo zypper al` | add a package lock                  |

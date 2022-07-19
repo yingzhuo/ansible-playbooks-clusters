@@ -1,7 +1,6 @@
 # HTTPie plugin
 
-This plugin adds completion for [HTTPie](https://httpie.org), a command line HTTP
-client, a friendlier cURL replacement.
+This plugin adds completion for [HTTPie](https://httpie.org), a command line HTTP client, a friendlier cURL replacement.
 
 To use it, add `httpie` to the plugins array in your zshrc file:
 

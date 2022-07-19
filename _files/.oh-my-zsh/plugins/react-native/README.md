@@ -1,7 +1,7 @@
 # React Native plugin
 
-This plugin adds completion for [`react-native`](https://facebook.github.io/react-native/).
-It also defines a few [aliases](#aliases) for the commands more frequently used.
+This plugin adds completion for [`react-native`](https://facebook.github.io/react-native/). It also defines a
+few [aliases](#aliases) for the commands more frequently used.
 
 To enable, add `react-native` to your `plugins` array in your zshrc file:
 

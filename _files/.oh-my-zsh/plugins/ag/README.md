@@ -10,4 +10,5 @@ plugins=(... ag)
 
 ## INSTALLATION NOTES
 
-Besides oh-my-zsh, `ag` needs to be installed by following these steps: https://github.com/ggreer/the_silver_searcher#installing.
+Besides oh-my-zsh, `ag` needs to be installed by following these
+steps: https://github.com/ggreer/the_silver_searcher#installing.

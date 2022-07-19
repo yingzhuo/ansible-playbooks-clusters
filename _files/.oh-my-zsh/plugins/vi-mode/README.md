@@ -10,20 +10,18 @@ plugins=(... vi-mode)
 
 ## Settings
 
-- `VI_MODE_RESET_PROMPT_ON_MODE_CHANGE`: controls whether the prompt is redrawn when
-  switching to a different input mode. If this is unset, the mode indicator will not
-  be updated when changing to a different mode.
-  Set it to `true` to enable it. For example:
+- `VI_MODE_RESET_PROMPT_ON_MODE_CHANGE`: controls whether the prompt is redrawn when switching to a different input
+  mode. If this is unset, the mode indicator will not be updated when changing to a different mode. Set it to `true` to
+  enable it. For example:
 
   ```zsh
   VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
   ```
 
-  The default value is unset, unless `vi_mode_prompt_info` is used, in which case it'll
-  automatically be set to `true`.
+  The default value is unset, unless `vi_mode_prompt_info` is used, in which case it'll automatically be set to `true`.
 
-- `VI_MODE_SET_CURSOR`: controls whether the cursor style is changed when switching
-  to a different input mode. Set it to `true` to enable it (default: unset):
+- `VI_MODE_SET_CURSOR`: controls whether the cursor style is changed when switching to a different input mode. Set it
+  to `true` to enable it (default: unset):
 
   ```zsh
   VI_MODE_SET_CURSOR=true
@@ -37,20 +35,18 @@ plugins=(... vi-mode)
 
 ## Mode indicators
 
-*Normal mode* is indicated with a red `<<<` mark at the right prompt, when it
-hasn't been defined by theme, *Insert mode* is not displayed by default.
+*Normal mode* is indicated with a red `<<<` mark at the right prompt, when it hasn't been defined by theme, *Insert
+mode* is not displayed by default.
 
 You can change these indicators by setting the `MODE_INDICATOR` (*Normal mode*) and
-`INSERT_MODE_INDICATORS` (*Insert mode*) variables.
-This settings support Prompt Expansion sequences. For example:
+`INSERT_MODE_INDICATORS` (*Insert mode*) variables. This settings support Prompt Expansion sequences. For example:
 
 ```zsh
 MODE_INDICATOR="%F{white}+%f"
 INSERT_MODE_INDICATOR="%F{yellow}+%f"
 ```
 
-You can also use the `vi_mode_prompt_info` function in your prompt, which will display
-this mode indicator.
+You can also use the `vi_mode_prompt_info` function in your prompt, which will display this mode indicator.
 
 ## Key bindings
 
@@ -117,15 +113,13 @@ NOTE: this used to be bound to `v`. That is now the default (`visual-mode`).
 
 ### Low `$KEYTIMEOUT`
 
-A low `$KEYTIMEOUT` value (< 15) means that key bindings that need multiple characters,
-like `vv`, will be very difficult to trigger. `$KEYTIMEOUT` controls the number of
-milliseconds that must pass before a key press is read and the appropriate key binding
-is triggered. For multi-character key bindings, the key presses need to happen before
-the timeout is reached, so on low timeouts the key press happens too slow, and therefore
-another key binding is triggered.
+A low `$KEYTIMEOUT` value (< 15) means that key bindings that need multiple characters, like `vv`, will be very
+difficult to trigger. `$KEYTIMEOUT` controls the number of milliseconds that must pass before a key press is read and
+the appropriate key binding is triggered. For multi-character key bindings, the key presses need to happen before the
+timeout is reached, so on low timeouts the key press happens too slow, and therefore another key binding is triggered.
 
-We recommend either setting `$KEYTIMEOUT` to a higher value, or remapping the key bindings
-that you want to trigger to a keyboard sequence. For example:
+We recommend either setting `$KEYTIMEOUT` to a higher value, or remapping the key bindings that you want to trigger to a
+keyboard sequence. For example:
 
 ```zsh
 bindkey -M vicmd 'V' edit-command-line # this remaps `vv` to `V` (but overrides `visual-mode`)

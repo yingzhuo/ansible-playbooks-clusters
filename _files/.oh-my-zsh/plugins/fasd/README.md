@@ -1,6 +1,7 @@
 # fasd
 
-[`Fasd`](https://github.com/clvv/fasd) (pronounced similar to "fast") is a command-line productivity booster. Fasd offers quick access to files and directories for POSIX shells.
+[`Fasd`](https://github.com/clvv/fasd) (pronounced similar to "fast") is a command-line productivity booster. Fasd
+offers quick access to files and directories for POSIX shells.
 
 To use it, add `fasd` to the plugins array in your zshrc file:
 

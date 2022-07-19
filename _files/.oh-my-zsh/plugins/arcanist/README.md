@@ -33,9 +33,8 @@ plugins=(... arcanist)
 
 ## Functions
 
-The following functions make copy pasting revision ids from the URL bar of your browser
-easier, as they allow for copy pasting the whole URL. For example: `ardu` accepts
-both `https://arcanist-url.com/<REVISION>` as well as `<REVISION>`.
+The following functions make copy pasting revision ids from the URL bar of your browser easier, as they allow for copy
+pasting the whole URL. For example: `ardu` accepts both `https://arcanist-url.com/<REVISION>` as well as `<REVISION>`.
 
 | Function                  | Command                           |
 | ------------------------- | --------------------------------- |

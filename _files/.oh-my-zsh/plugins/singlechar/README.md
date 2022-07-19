@@ -3,6 +3,7 @@
 This plugin adds single char shortcuts (and combinations) for some commands.
 
 To use it, add `singlechar` to the plugins array of your zshrc file:
+
 ```
 plugins=(... singlechar)
 ```
@@ -31,8 +32,8 @@ plugins=(... singlechar)
 
 ### XARGS
 
-These aliases are versions of the aliases above but using xargs. This can be used
-by piping the arguments to the xargs aliases.
+These aliases are versions of the aliases above but using xargs. This can be used by piping the arguments to the xargs
+aliases.
 
 | Alias | Command              | Description                     |
 |-------|----------------------|---------------------------------|
@@ -101,9 +102,8 @@ Same as above but using both sudo and xargs.
 
 ## Options
 
-The commands `grep`, `sudo`, `wget`, `curl`, and `less` can be configured to use other commands
-via the setup variables below, before Oh My Zsh is sourced. If they are not set yet, they will
-use their default values:
+The commands `grep`, `sudo`, `wget`, `curl`, and `less` can be configured to use other commands via the setup variables
+below, before Oh My Zsh is sourced. If they are not set yet, they will use their default values:
 
 | Setup variable | Default value |
 |----------------|---------------|

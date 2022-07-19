@@ -45,7 +45,6 @@ $ dnote edit ja(press <TAB> here)
 
 would result in:
 
-
 ```zsh
 $ dnote v javascript
 ``````

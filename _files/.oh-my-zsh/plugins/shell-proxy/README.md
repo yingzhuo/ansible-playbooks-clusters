@@ -28,8 +28,8 @@ proxy enable
 
 ### Method 2
 
-Write a program file in `$HOME/.config/proxy` so that the proxy URL is defined dynamically.
-Note that the program file must be executable.
+Write a program file in `$HOME/.config/proxy` so that the proxy URL is defined dynamically. Note that the program file
+must be executable.
 
 Example:
 

@@ -30,7 +30,6 @@ plugins=(... rvm)
 
 ## Deprecated versions
 
-At the time of writing this (2021-12-28), Ruby versions until 2.5 are [EOL][1],
-and will be removed in the future.
+At the time of writing this (2021-12-28), Ruby versions until 2.5 are [EOL][1], and will be removed in the future.
 
 [1]: https://endoflife.date/ruby

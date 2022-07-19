@@ -1,9 +1,9 @@
 # emotty plugin
 
-This plugin returns an emoji for the current $TTY number so it can be used
-in a prompt.
+This plugin returns an emoji for the current $TTY number so it can be used in a prompt.
 
 To use it, add emotty to the plugins array in your zshrc file:
+
 ```
 plugins=(... emotty)
 ```
@@ -12,11 +12,12 @@ plugins=(... emotty)
 
 ## Usage
 
-The function `emotty` displays an emoji from the current character set (default: `emoji`), based
-on the number associated to the `$TTY`.
+The function `emotty` displays an emoji from the current character set (default: `emoji`), based on the number
+associated to the `$TTY`.
 
-There are different sets of emoji characters available, to choose a different
-set, set `$emotty_set` to the name of the set you would like to use, e.g.:
+There are different sets of emoji characters available, to choose a different set, set `$emotty_set` to the name of the
+set you would like to use, e.g.:
+
 ```
 emotty_set=nature
 ```
@@ -30,8 +31,8 @@ emotty_set=nature
 - stellar
 - zodiac
 
-Use the `display_emotty` function to list the emojis in the current character set, or
-the character set passed as the first argument. For example:
+Use the `display_emotty` function to list the emojis in the current character set, or the character set passed as the
+first argument. For example:
 
 ```
 $ display_emotty zodiac

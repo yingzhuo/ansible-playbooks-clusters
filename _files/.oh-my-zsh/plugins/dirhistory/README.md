@@ -30,9 +30,10 @@ and <kbd>Alt</kbd> + <kbd>Right</kbd>. <kbd>Alt</kbd> + <kbd>Left</kbd> moves to
 
 **NOTE: the maximum directory history size is 30.**
 
-You can also navigate **directory hierarchies** using <kbd>Alt</kbd> + <kbd>Up</kbd> and <kbd>Alt</kbd> + <kbd>Down</kbd>.
-<kbd>Alt</kbd> + <kbd>Up</kbd> moves to the parent directory, while <kbd>Alt</kbd> + <kbd>Down</kbd> moves into the first
-child directory found in alphabetical order (useful to navigate long empty directories, e.g. Java packages).
+You can also navigate **directory hierarchies** using <kbd>Alt</kbd> + <kbd>Up</kbd> and <kbd>Alt</kbd> + <kbd>
+Down</kbd>.
+<kbd>Alt</kbd> + <kbd>Up</kbd> moves to the parent directory, while <kbd>Alt</kbd> + <kbd>Down</kbd> moves into the
+first child directory found in alphabetical order (useful to navigate long empty directories, e.g. Java packages).
 
 For example, if the shell was started, and the following commands were entered:
 
@@ -53,10 +54,10 @@ $ dirs -v
 3       ~
 ```
 
-then entering <kbd>Alt</kbd> + <kbd>Left</kbd> at the prompt would change directory from `/usr/share/doc` to `/usr/share`,
-then if pressed again to `/usr`, then `~`. If <kbd>Alt</kbd> + <kbd>Right</kbd> were pressed the directory would be changed
-to `/usr` again.
+then entering <kbd>Alt</kbd> + <kbd>Left</kbd> at the prompt would change directory from `/usr/share/doc`
+to `/usr/share`, then if pressed again to `/usr`, then `~`. If <kbd>Alt</kbd> + <kbd>Right</kbd> were pressed the
+directory would be changed to `/usr` again.
 
-After that, <kbd>Alt</kbd> + <kbd>Down</kbd> will probably go to `/usr/bin` if `bin` is the first directory in alphabetical
-order (depends on your `/usr` folder structure). <kbd>Alt</kbd> + <kbd>Up</kbd> will return to `/usr`, and once more will get
-you to the root folder (`/`).
+After that, <kbd>Alt</kbd> + <kbd>Down</kbd> will probably go to `/usr/bin` if `bin` is the first directory in
+alphabetical order (depends on your `/usr` folder structure). <kbd>Alt</kbd> + <kbd>Up</kbd> will return to `/usr`, and
+once more will get you to the root folder (`/`).

@@ -19,9 +19,8 @@ Usage is simple... just take your json data and pipe it into the appropriate jso
 
 ### Supports NDJSON (Newline Delimited JSON)
 
-The plugin also supports [NDJSON](http://ndjson.org/) input, which means all functions
-have an alternative function that reads and processes the input line by line. These
-functions have the same name except using `ndjson` instead of `json`:
+The plugin also supports [NDJSON](http://ndjson.org/) input, which means all functions have an alternative function that
+reads and processes the input line by line. These functions have the same name except using `ndjson` instead of `json`:
 
 > `pp_ndjson`, `is_ndjson`, `urlencode_ndjson`, `urldecode_ndjson`.
 

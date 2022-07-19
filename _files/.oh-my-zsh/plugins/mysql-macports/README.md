@@ -1,6 +1,7 @@
 # MySQL-Macports plugin
 
-This plugin adds aliases for some of the commonly used [MySQL](https://www.mysql.com/) commands when installed using [MacPorts](https://www.macports.org/) on macOS.
+This plugin adds aliases for some of the commonly used [MySQL](https://www.mysql.com/) commands when installed
+using [MacPorts](https://www.macports.org/) on macOS.
 
 To use it, add `mysql-macports` to the plugins array in your zshrc file:
 
@@ -8,7 +9,8 @@ To use it, add `mysql-macports` to the plugins array in your zshrc file:
 plugins=(... mysql-macports)
 ```
 
-For instructions on how to install MySQL using MacPorts, read the [MacPorts wiki](https://trac.macports.org/wiki/howto/MySQL/).
+For instructions on how to install MySQL using MacPorts, read
+the [MacPorts wiki](https://trac.macports.org/wiki/howto/MySQL/).
 
 ## Aliases
 
